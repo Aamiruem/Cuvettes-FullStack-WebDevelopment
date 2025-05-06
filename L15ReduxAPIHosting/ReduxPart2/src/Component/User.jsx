@@ -34,9 +34,43 @@
 
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUser } from '../Redux/Slices/userSlice'; // <-- You need to create this slice
+import { setMainUser, setUsers } from '../Redux/Slices/userSlice'; // <-- You need to create this slice
 
 const User = () => {
+    
+
+    const isActive = useSelector((state) => {
+        return state.user.isActive;
+    });
+    console.log(isActive);  
+
+    const users = useSelector((state) => state.user.users);
+
+    // const dispatch = useDispatch();
+
+    const setActive = useSelector((state) => {
+        return state.user.isActive;
+    });
+
+    console.log(setActive);
+    const setLoading = useSelector((state) => {
+        return state.user.loading;
+    });
+    console.log(setLoading);
+    
+
+    console.log(users);
+    const loading = useSelector((state) => {
+        return state.user.loading;
+    });
+    console.log(loading);
+    const error = useSelector((state) => {
+        return state.user.error;
+    });
+    console.log(error);
+
+
+
     const [user, setUserState] = useState({
         name: '',
         email: '',
@@ -57,14 +91,37 @@ const User = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form submitted!', user);
-        dispatch(setUser(user)); // Dispatch user data to Redux store
-        setUserState({ name: '', email: '', password: '' }); // ✅ Reset form
+        dispatch(setMainUser(user)); // Dispatch user data to Redux store
+        setUserState({
+            name: '',
+            email: '',
+            password: ''
+            
+         }); // ✅ Reset form
+        // Removed redundant setUser call
+
+        dispatch(setUsers(user)); // Dispatch user data to Redux store
+        dispatch(setMainUser(user)); // Dispatch user data to Redux store
+        setUserState({
+            name: '',
+            email: '',
+            password: ''
+            
+        }); // ✅ Reset form
+        
+        dispatch(setActive(true)); // Dispatch user data to Redux store
+        dispatch(setLoading(false)); // Dispatch user data to Redux store
     };
 
     return (
         <div>
             <h1>Count: {count}</h1>
+            <h1>Data Submitted</h1>
             <h2>User Form</h2>
+            <h1>User:{user.name}</h1>
+            {
+                isActive? <h1>Submitted</h1> : <h1>Not Submitted</h1>
+            }
 
             <form onSubmit={handleSubmit}>
                 <input
@@ -91,6 +148,12 @@ const User = () => {
                     placeholder="Enter your password"
                 />
 
+                <br />
+                <br />
+                <button type="button" onClick={() => setUserState({ name: '', email: '', password: '' })}>
+                    Reset
+                    </button>
+                
                 <button type="submit">Submit</button>
             </form>
         </div>
