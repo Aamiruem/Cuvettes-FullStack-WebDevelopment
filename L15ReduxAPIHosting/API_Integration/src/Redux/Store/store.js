@@ -11,5 +11,7 @@ export const store = configureStore({
         user: userReducer,
         
         [postApi.reducerPath]: postApi.reducer,
+        
     }
 });
+

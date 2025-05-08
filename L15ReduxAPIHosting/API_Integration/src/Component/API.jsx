@@ -170,13 +170,76 @@
 
 
 
+// import React from "react";
+// import axios from "axios";
+// import { useGetPostQuery } from "../Redux/Slices/Api/postApiSlice";
+// import { useGetPostQuery, useAddPostMutation } from "../Redux/Slices/Api/postApiSlice";
+
+// const Api = () => {
+//     const { data: posts, isLoading, error } = useGetPostQuery();
+
+//     const postPostData = async () => {
+//         const postDataValue = {
+//             userId: 101,
+//             id: 101,
+//             title: "sunt aut facere repellat provident occaecati",
+//             body: "quia et suscipit suscipit recusandae consequuntur expedita et cum",
+//         };
+
+//         try {
+//             const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+//                 method: "POST",
+//                 headers: {
+//                     "Content-type": "application/json; charset=UTF-8",
+//                 },
+//                 body: JSON.stringify(postDataValue),
+//             });
+
+//             const result = await response.json();
+//             console.log("Posted:", result);
+//         } catch (err) {
+//             console.error("Error posting data:", err);
+//         }
+//     };
+
+//     if (isLoading) return <div>Loading...</div>;
+//     if (error) return <div>Error loading posts</div>;
+
+//     const{data: posts} = useGetPostQuery();
+//     console.log("Posts:", posts);
+//     const [addPost] = useAddPostMutation();
+
+
+//     return (
+//         <div>
+//             <h2>List Items</h2>
+//             <ul>
+//                 {posts &&
+//                     posts.map((item, index) => (
+//                         <li key={index}>{item.title}</li>
+//                     ))}
+//             </ul>
+//             <button onClick={postPostData}>Post Data</button>
+//         </div>
+//     );
+// };
+
+// export default Api;
+
+
+
+
+
+
+
+
 import React from "react";
-import axios from "axios";
-import { useGetPostQuery } from "../Redux/Slices/Api/postApiSlice";
-import { useGetPostQuery } from "../Redux/Slices/Api/postApiSlice";
+import { useGetPostQuery, useAddPostMutation } from "../Redux/Slices/Api/postApiSlice";
 
 const Api = () => {
+    // Get posts data
     const { data: posts, isLoading, error } = useGetPostQuery();
+    const [addPost] = useAddPostMutation();
 
     const postPostData = async () => {
         const postDataValue = {
@@ -187,6 +250,12 @@ const Api = () => {
         };
 
         try {
+            // Using RTK Query mutation
+            const result = await addPost(postDataValue).unwrap();
+            console.log("Posted:", result);
+            
+            // Alternative using fetch (remove if using RTK mutation)
+            /*
             const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
                 method: "POST",
                 headers: {
@@ -194,9 +263,9 @@ const Api = () => {
                 },
                 body: JSON.stringify(postDataValue),
             });
-
             const result = await response.json();
             console.log("Posted:", result);
+            */
         } catch (err) {
             console.error("Error posting data:", err);
         }
@@ -214,7 +283,7 @@ const Api = () => {
                         <li key={index}>{item.title}</li>
                     ))}
             </ul>
-            <button onClick={postPostData}>Post Data</button>
+            <button onClick={PostData}>Post Data</button>
         </div>
     );
 };
