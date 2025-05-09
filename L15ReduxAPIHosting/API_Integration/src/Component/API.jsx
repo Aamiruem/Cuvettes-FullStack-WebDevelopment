@@ -283,7 +283,7 @@ const Api = () => {
                         <li key={index}>{item.title}</li>
                     ))}
             </ul>
-            <button onClick={PostData}>Post Data</button>
+            <button onClick={postPostData}>Post Data</button>
         </div>
     );
 };
