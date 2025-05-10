@@ -37,6 +37,9 @@
 
 import { useState } from "react";
 import "./App.css";
+import Form from "./Components/Form";
+import Table from "./Components/Table";
+
 
 function App() {
   const [user, setUser] = useState({
@@ -82,29 +85,23 @@ function App() {
     });
   };
 
-  return (
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-        <input name="name" value={user.name} onChange={handleChange} placeholder="Name" />
-        <br />
-        <br />
-        <input name="email" value={user.email} onChange={handleChange} placeholder="Email" />
-        <br />
-        <br />
-        <input name="phone" value={user.phone} onChange={handleChange} placeholder="Phone" />
-        <br />
-        <br />
-        <input name="password" value={user.password} onChange={handleChange} placeholder="Password" type="password" />
-        <br />
-        <br />
-        <button type="submit">Submit</button>
-      </form>
+  const handleEdit = (userToEdit) => {
+    setUser(userToEdit);
+  };
 
-      <ul>
-        {users.map((u) => (
-          <li key={u.id}>{u.name} - {u.email}</li>
-        ))}
-      </ul>
+  const handleDelete = (idToDelete) => {
+    const filteredUsers = users.filter((user) => user.id !== idToDelete);
+    setUsers(filteredUsers);
+  };
+
+  return (
+    <div className="Container">
+      <Form
+        user={user}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
+      <Table users={users} onEdit={handleEdit} onDelete={handleDelete} />
     </div>
   );
 }
