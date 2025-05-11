@@ -179,69 +179,17 @@
 
 
 
-import Form from "./Components/Form/Form";
+import Form from "./Components/form/Form";
 import Table from "./Components/table/Table";
-import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    password: "",
-  });
-
-  const [users, setUsers] = useState([]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser({ ...user, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (user.id) {
-      // Update existing user
-      const updatedUsers = users.map((item) =>
-        item.id === user.id ? { ...user } : item
-      );
-      setUsers(updatedUsers);
-    } else {
-      // Add new user
-      setUsers([...users, { ...user, id: crypto.randomUUID() }]);
-    }
-
-    // Reset form
-    setUser({
-      name: "",
-      email: "",
-      phone: "",
-      password: "",
-    });
-  };
-
-  const handleDelete = (id) => {
-    const updatedUsers = users.filter((item) => item.id !== id);
-    setUsers(updatedUsers);
-  };
-
-  const handleEdit = (item) => {
-    setUser(item);
-    console.log("Editing:", item);
-  };
+  
 
   return (
     <div className="container">
-      <h1>User Form</h1>
-      
-
-      <h2>User Records</h2>
-      
-
-      <Form handleChange={handleChange} handleSubmit={handleSubmit} />
-      <Table users={users} handleEdit={handleEdit} handleDelete={handleDelete} />
+      <Form />
+      <Table/>
     </div>
   );
 }

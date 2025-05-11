@@ -52,68 +52,132 @@
 
 
 
-// import React from 'react'
+// import { UserContext } from "../../Context/UserContextProvider";
 
-import React, { useState } from 'react';
+
+// import React, { useState } from 'react';
+
+// const Form = () => {
+//     // const {} = UserContext(UserContext)
+//     const [user, setUser] = useState({
+//         name: '',
+//         email: '',
+//         phone: '',
+//         password: '',
+//         id: null,
+//     });
+
+//     const handleChange = (event) => {
+//         const { name, value } = event.target;
+//         setUser((prevUser) => ({
+//             ...prevUser,
+//             [name]: value,
+//         }));
+//     };
+
+//     const handleSubmit = (event) => {
+//         event.preventDefault();
+//         console.log("Form submitted", user);
+//     };
+
+//     return (
+//         <div>
+
+//             <form onSubmit={handleSubmit}>
+//                 <input
+//                     type="text"
+//                     name="name"
+//                     placeholder="Name"
+//                     value={user.name}
+//                     onChange={handleChange}
+//                 /><br /><br />
+//                 <input
+//                     type="email"
+//                     name="email"
+//                     placeholder="Email"
+//                     value={user.email}
+//                     onChange={handleChange}
+//                 /><br /><br />
+//                 <input
+//                     type="text"
+//                     name="phone"
+//                     placeholder="Phone"
+//                     value={user.phone}
+//                     onChange={handleChange}
+//                 /><br /><br />
+//                 <input
+//                     type="password"
+//                     name="password"
+//                     placeholder="Password"
+//                     value={user.password}
+//                     onChange={handleChange}
+//                 /><br /><br />
+//                 <button type="submit">{user.id ? "Update User" : "Add User"}</button>
+//             </form>
+//         </div>
+//     )
+// }
+
+// export default Form
+
+
+
+
+
+
+import React, { useContext } from "react";
+import { UserContext } from "./Context/UserContextProvider";
+import Form from 
 
 const Form = () => {
-    const [user, setUser] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        password: '',
-        id: null,
-    });
-
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setUser((prevUser) => ({
-            ...prevUser,
-            [name]: value,
-        }));
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log("Form submitted", user);
-    };
+    const {
+        user,
+        handleChange,
+        handleSubmit
+    } = useContext(UserContext);
 
     return (
-        <div>
-
+        <div className="form">
+            <h1>Create Record</h1>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    name="name"
                     placeholder="Name"
+                    name="name"
                     value={user.name}
                     onChange={handleChange}
-                /><br /><br />
+                />
+                <br /><br />
                 <input
                     type="email"
-                    name="email"
                     placeholder="Email"
+                    name="email"
                     value={user.email}
                     onChange={handleChange}
-                /><br /><br />
+                />
+                <br /><br />
                 <input
                     type="text"
+                    placeholder="Phone Number"
                     name="phone"
-                    placeholder="Phone"
                     value={user.phone}
                     onChange={handleChange}
-                /><br /><br />
+                />
+                <br /><br />
                 <input
                     type="password"
-                    name="password"
                     placeholder="Password"
+                    name="password"
                     value={user.password}
                     onChange={handleChange}
-                /><br /><br />
-                <button type="submit">{user.id ? "Update User" : "Add User"}</button>
+                />
+                <br /><br />
+                <button type="submit">
+                    {user.id ? "Update" : "Add"} User
+                </button>
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default Form
+export default Form;
