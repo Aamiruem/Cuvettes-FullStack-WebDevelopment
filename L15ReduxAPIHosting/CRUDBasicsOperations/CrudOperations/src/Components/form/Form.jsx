@@ -125,59 +125,65 @@
 
 
 
-import React, { useContext } from "react";
-import { UserContext } from "./Context/UserContextProvider";
-import Form from 
+// import React, { useContext } from "react";
+// import { UserContext } from "../Context/UserContextProvider";
+// // import Form from "./Components/Form/Form.jsx"
 
-const Form = () => {
-    const {
-        user,
-        handleChange,
-        handleSubmit
-    } = useContext(UserContext);
 
-    return (
-        <div className="form">
-            <h1>Create Record</h1>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Name"
-                    name="name"
-                    value={user.name}
-                    onChange={handleChange}
-                />
-                <br /><br />
-                <input
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    value={user.email}
-                    onChange={handleChange}
-                />
-                <br /><br />
-                <input
-                    type="text"
-                    placeholder="Phone Number"
-                    name="phone"
-                    value={user.phone}
-                    onChange={handleChange}
-                />
-                <br /><br />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    value={user.password}
-                    onChange={handleChange}
-                />
-                <br /><br />
-                <button type="submit">
-                    {user.id ? "Update" : "Add"} User
-                </button>
-            </form>
-        </div>
-    );
-};
+// const Form = () => {
+//     const {
+//         user,
+//         handleChange,
+//         handleSubmit
+//     } = useContext(UserContext);
 
-export default Form;
+//     return (
+//         <div className="form">
+//             <h1>Create Record</h1>
+//             <form onSubmit={handleSubmit}>
+//                 <input
+//                     type="text"
+//                     placeholder="Name"
+//                     name="name"
+//                     value={user.name}
+//                     onChange={handleChange}
+//                 />
+//                 <br /><br />
+//                 <input
+//                     type="email"
+//                     placeholder="Email"
+//                     name="email"
+//                     value={user.email}
+//                     onChange={handleChange}
+//                 />
+//                 <br /><br />
+//                 <input
+//                     type="text"
+//                     placeholder="Phone Number"
+//                     name="phone"
+//                     value={user.phone}
+//                     onChange={handleChange}
+//                 />
+//                 <br /><br />
+//                 <input
+//                     type="password"
+//                     placeholder="Password"
+//                     name="password"
+//                     value={user.password}
+//                     onChange={handleChange}
+//                 />
+//                 <br /><br />
+//                 <button type="submit">
+//                     {user.id ? "Update" : "Add"} User
+//                 </button>
+//             </form>
+//         </div>
+//     );
+// };
+
+// export default Form;
+
+
+
+
+
