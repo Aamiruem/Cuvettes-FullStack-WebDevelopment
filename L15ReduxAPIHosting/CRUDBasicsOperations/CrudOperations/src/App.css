@@ -83,12 +83,12 @@ th, td {
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: #30814a;
   font-weight: bold;
 }
 
 tr:hover {
-  background-color: #f5f5f5;
+  background-color: #a78585;
 }
 
 /* Button Styles */
@@ -99,7 +99,7 @@ tr:hover {
 
 .edit-btn {
   background-color: #f39c12;
-  color: white;
+  color: rgb(11, 189, 43);
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
