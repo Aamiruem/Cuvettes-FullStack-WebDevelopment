@@ -1,21 +1,23 @@
 
-import './index.css'
-import App from './App.jsx'
 import React from 'react'
-
 import ReactDOM from 'react-dom/client'
 import { Provider } from "react-redux";
-import { store } from './Redux/Store/Store.js'
-// import { BrowserRouter } from 'react-router-dom'
+import App from './App.jsx'
 import './index.css'
 
+//Context
+import UserContextProvider from "./Context/UserContextProvider.jsx";
+
+
+//Redux
+import {store} from './Redux/Store/store.js'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider store={store}>
-      {/* <BrowserRouter> */}
+    <UserContextProvider>
+      <Provider store={store}>
         <App />
-      {/* </BrowserRouter> */}
-    </Provider>
-  </React.StrictMode>,
+      </Provider>
+    </UserContextProvider>
+  </React.StrictMode>
 )

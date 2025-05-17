@@ -25,6 +25,7 @@
 
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+// import { postApi } from './Redux/Slices/Api/postApiSlice';  // adjust path accordingly
 
 export const postApi = createApi({
     reducerPath: 'postApi',

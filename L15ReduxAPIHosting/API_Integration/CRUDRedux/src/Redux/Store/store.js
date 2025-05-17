@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import counterReducer from '../Slices/States/counterSlice';
-import userReducer from '../Slices/States/userSlice';
+import counterReducer from '../Slice/State/counterSlice';
+import userReducer from '../Slices/State/userSlice';
 import { postApi } from '../Slices/Api/postApiSlice';
 
 
@@ -14,4 +14,3 @@ export const store = configureStore({
         
     }
 });
-
