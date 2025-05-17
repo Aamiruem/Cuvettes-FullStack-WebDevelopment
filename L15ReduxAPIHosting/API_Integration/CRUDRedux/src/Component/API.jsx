@@ -236,7 +236,7 @@
 import React from "react";
 import { useGetPostQuery, useAddPostMutation } from "../Redux/Slices/Api/postApiSlice";
 
-const Api = () => {
+const API = () => {
     // Get posts data
     const { data: posts, isLoading, error } = useGetPostQuery();
     const [addPost] = useAddPostMutation();
@@ -288,4 +288,4 @@ const Api = () => {
     );
 };
 
-export default Api;
+export default API;

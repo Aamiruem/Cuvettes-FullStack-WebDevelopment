@@ -38,13 +38,13 @@ import Counter from './Component/Counter';
 import User from './Component/User';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import Api from './Component/API'; // ✅ Corrected import name
+import API from './Component/API'; // ✅ Corrected import name
 
 function App() {
   return (
     <BrowserRouter>
       <div>
-        <Api />
+        <API />
       </div>
     </BrowserRouter>
   );

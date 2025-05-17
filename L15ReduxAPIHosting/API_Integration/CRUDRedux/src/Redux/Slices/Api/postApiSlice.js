@@ -38,12 +38,12 @@ export const postApi = createApi({
 
 
 
-             addPost: builder.mutation({
-             query: (data) => ({
-                url: 'posts',
-                method: 'POST',
-                body: data,
-                    
+            addPost: builder.mutation({
+                query: (data) => ({
+                    url: 'posts',
+                    method: 'POST',
+                    body: data,
+
 
                 }),
             }),
