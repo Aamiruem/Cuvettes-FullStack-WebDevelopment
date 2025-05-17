@@ -129,10 +129,8 @@
 
 
 
-import React, { createContext, useState } from "react";
-
-// ✅ Create context with a distinct name
-export const UserContext = createContext();
+import React, { useState } from "react";
+import { UserContext } from "./UserContext";
 
 export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState({
@@ -184,3 +182,5 @@ export const UserContextProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
+
+export default UserContextProvider;
