@@ -14,6 +14,10 @@ const Form = () => {
             .required('Name is required')
             .min(3, 'Name must be at least 3 characters'),
         email: Yup.string()
+            .matches(
+                /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                'Invalid email format'
+            )
             .email('Invalid email')
             .required('Email is required')
             .test('unique-email', 'Email already exists', (value) => {
@@ -35,7 +39,7 @@ const Form = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         dispatch(setUser({ ...user, [name]: value }));
-        
+
         // Clear error when user starts typing
         if (errors[name]) {
             setErrors(prev => {
@@ -48,11 +52,11 @@ const Form = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         try {
             await validationSchema.validate(user, { abortEarly: false });
             setErrors({});
-            
+
             if (user.id) {
                 // Update existing user
                 dispatch(editUser(user));
@@ -61,7 +65,7 @@ const Form = () => {
                 const newUser = { ...user, id: crypto.randomUUID() };
                 dispatch(setUsers(newUser));
             }
-            
+
             // Reset form
             dispatch(setUser({
                 id: '',
@@ -70,7 +74,7 @@ const Form = () => {
                 phone: '',
                 password: ''
             }));
-            
+
         } catch (err) {
             const validationErrors = {};
             err.inner.forEach((error) => {
@@ -83,7 +87,7 @@ const Form = () => {
     const handleDelete = (id) => {
         if (window.confirm('Are you sure you want to delete this user?')) {
             dispatch(deleteUser(id));
-            
+
             // If editing the deleted user, reset form
             if (user.id === id) {
                 dispatch(setUser({
@@ -107,7 +111,7 @@ const Form = () => {
     return (
         <div className='form-container'>
             <h1>{user.id ? "Update User" : "Create User"}</h1>
-            
+
             <form onSubmit={handleSubmit} className="user-form">
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
@@ -166,12 +170,12 @@ const Form = () => {
                 </div>
 
                 <button type='submit' className="submit-btn">
-                    {user.id ? "Update User" : "Add User"}
+                    {user.id ? "Update User" : "Save "}
                 </button>
-                
+
                 {user.id && (
-                    <button 
-                        type="button" 
+                    <button
+                        type="button"
                         className="cancel-btn"
                         onClick={() => dispatch(setUser({
                             id: '',
@@ -207,13 +211,13 @@ const Form = () => {
                                     <td>{user.email}</td>
                                     <td>{user.phone}</td>
                                     <td className="actions">
-                                        <button 
+                                        <button
                                             onClick={() => handleEdit(user.id)}
                                             className="edit-btn"
                                         >
                                             Edit
                                         </button>
-                                        <button 
+                                        <button
                                             onClick={() => handleDelete(user.id)}
                                             className="delete-btn"
                                         >
