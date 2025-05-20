@@ -2,7 +2,7 @@
     max-width: 400px;
     margin: 2rem auto;
     padding: 2rem;
-    background: white;
+    background: rgb(50, 29, 183);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
@@ -26,7 +26,7 @@
   .form-group input {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #ddd;
+    border: 1px solid #eaa1a1;
     border-radius: 4px;
     box-sizing: border-box;
   }
@@ -51,7 +51,7 @@
     width: 100%;
     padding: 0.75rem;
     background-color: #007bff;
-    color: white;
+    color: rgb(102, 87, 190);
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -64,7 +64,7 @@
   }
   
   button:disabled {
-    background-color: #cccccc;
+    background-color: #8e3737;
     cursor: not-allowed;
   }
   
@@ -76,11 +76,11 @@
   }
   
   .submit-message.success {
-    background-color: #d4edda;
+    background-color: #8ea493;
     color: #155724;
   }
   
   .submit-message.error {
-    background-color: #f8d7da;
+    background-color: #06a421;
     color: #721c24;
   }

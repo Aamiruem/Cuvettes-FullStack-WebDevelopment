@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 // In App.js or wherever you import it
-import RegistrationForm from './Components/RegistrationForm.jsx';
+// In App.js or wherever you import it
+import RegistrationForm from './RegistrationForm.jsx';
 
 function App() {
   return (
