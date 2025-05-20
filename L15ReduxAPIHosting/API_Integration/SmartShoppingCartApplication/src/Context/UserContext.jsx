@@ -51,13 +51,16 @@
 
 
 
-// import { UserProvider, useUser } from './Context/UserContext.jsx';
+// src/Context/UserContext.jsx
+import React, { useContext, useState, createContext } from 'react';
+// import { createContext, useState, useContext } from "react";
 
-import { useContext, useState } from 'react';
-import UserContext from './UserContextObject';
 
-// 2. Provider component
-export function UserProvider({ children }) {
+// ✅ 1. Create Context
+export const UserContext = createContext();
+
+// ✅ 2. Context Provider
+export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({
     name: 'Guest',
     email: '',
@@ -66,10 +69,7 @@ export function UserProvider({ children }) {
   });
 
   const login = (userData) => {
-    setUser({
-      ...userData,
-      isLoggedIn: true
-    });
+    setUser({ ...userData, isLoggedIn: true });
   };
 
   const logout = () => {
@@ -82,10 +82,7 @@ export function UserProvider({ children }) {
   };
 
   const updateProfile = (updatedData) => {
-    setUser(prev => ({
-      ...prev,
-      ...updatedData
-    }));
+    setUser(prev => ({ ...prev, ...updatedData }));
   };
 
   return (
@@ -93,9 +90,9 @@ export function UserProvider({ children }) {
       {children}
     </UserContext.Provider>
   );
-}
+};
 
-// 3. Custom hook
+// ✅ 3. Custom hook
 export const useUser = () => {
   const context = useContext(UserContext);
   if (!context) {
