@@ -109,6 +109,7 @@ function App() {
       
       case "name":
         return { ...state, name: action.payload };
+      
       case "email":
         return { ...state, email: action.payload };
       case "password":
@@ -175,11 +176,21 @@ function App() {
     }
   });
 }}>
-  <input name="name" placeholder="Name" />
-  <input name="email" placeholder="Email" />
-  <input name="password" type="password" placeholder="Password" />
-  <input name="confirmPassword" type="password" placeholder="Confirm Password" />
-  <button type="submit">Submit</button>
+        <input name="name" placeholder="Name" />
+        <br />
+        <br />
+        <input name="email" placeholder="Email" />
+        <br />
+        <br />
+        <input name="password" type="password" placeholder="Password" />
+        <br />
+        <br />
+        <input name="confirmPassword" type="password" placeholder="Confirm Password" />
+        <br />
+        <br />
+        <button type="submit">Submit</button>
+        <br />
+        <br />
 </form>
 
     </div>
