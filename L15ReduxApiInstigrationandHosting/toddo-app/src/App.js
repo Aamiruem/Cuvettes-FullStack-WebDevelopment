@@ -1,13 +1,12 @@
 
-import './App.css';
-
 // src/App.js
+
+import './App.css';
 import React from 'react';
 import { TodoProvider } from './Contexts/TodoContext';
-import TodoForm from './Components/ToddoForm';
-import TodoList from './Components/ToddoList';
-
-import ToddoItem from './Components/ToddoItem';
+import TodoForm from './Components/TodoForm';
+import TodoList from './Components/TodoList';
+import TodoItem from './Components/TodoItem';
 
 
 const App = () => {
@@ -17,7 +16,7 @@ const App = () => {
         <h1>Todo List</h1>
         <TodoForm />
         <TodoList />
-        <ToddoItem />
+        <TodoItem />
       </div>
     </TodoProvider>
   );
