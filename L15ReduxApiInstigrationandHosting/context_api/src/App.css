@@ -36,3 +36,82 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+
+.employee-list {
+  list-style: none;
+  padding: 0;
+}
+
+
+
+
+
+
+/* App.css */
+.app-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.employee-table th,
+.employee-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #dddddd;
+}
+
+.employee-table th {
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.employee-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.employee-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #e74c3c;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .employee-table {
+    font-size: 14px;
+  }
+  
+  .employee-table th,
+  .employee-table td {
+    padding: 8px 10px;
+  }
+}

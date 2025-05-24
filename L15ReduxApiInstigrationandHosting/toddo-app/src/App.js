@@ -3,10 +3,10 @@
 
 // import './App.css';
 // import React from 'react';
-// import { TodoProvider } from './Contexts/TodoContext';
-// import TodoForm from './Components/TodoForm';
-// import TodoList from './Components/TodoList';
-// import TodoItem from './Components/TodoItem';
+// import { TodoProvider } from './contexts/TodoContext';
+// import TodoForm from './components/TodoForm';
+// import TodoList from './components/TodoList';
+// import TodoItem from './components/TodoItem';
 
 
 // const App = () => {
