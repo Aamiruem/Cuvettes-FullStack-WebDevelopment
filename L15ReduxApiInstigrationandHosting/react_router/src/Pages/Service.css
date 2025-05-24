@@ -1,0 +1,123 @@
+.service-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Arial', sans-serif;
+}
+
+.service-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.service-header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.service-subtitle {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.service-card {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.service-card p {
+    color: #7f8c8d;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.learn-more-btn {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.learn-more-btn:hover {
+    color: #2980b9;
+}
+
+.service-cta {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.service-cta h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.service-cta p {
+    color: #7f8c8d;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.cta-button {
+    background: #3498db;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #2980b9;
+}
+
+.navigation-links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-link, .about-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.home-link:hover, .about-link:hover {
+    background: #f0f0f0;
+}
