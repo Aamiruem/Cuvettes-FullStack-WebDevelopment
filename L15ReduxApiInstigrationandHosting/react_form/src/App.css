@@ -1,0 +1,97 @@
+.App{
+  text-align: center;
+  font-size: 20px;
+  color: #333;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+
+}
+
+.App h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+.App form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.App form input {
+  width: 300px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.App form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.App form button:hover {
+  background-color: #0056b3;
+}
+.App .error {
+  color: red;
+  margin-top: 10px;
+}
+.App .success {
+  color: green;
+  margin-top: 10px;
+}
+.App .loading {
+  color: #007bff;
+  margin-top: 10px;
+}
+.App .user-list {
+  margin-top: 20px;
+  text-align: left;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+.App .user-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+.App .user-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.App .user-list li:last-child {
+  border-bottom: none;
+}
+.App .user-list li span {
+  display: block;
+  margin-bottom: 5px;
+}
+.App .user-list li span strong {
+  color: #007bff;
+}
+.App .user-list li span.email {
+  color: #555;
+}
+.App .user-list li span.phone {
+  color: #888;
+}
+.App .user-list li span.address {
+  color: #666;
+}
+.App .user-list li span.address strong {
+  color: #333;
+}
+.App .user-list li span.address p {
+  margin: 0;
+}
+.App .user-list li span.address p span {
+  display: inline-block;
+  margin-right: 5px;
+}
+.App .user-list li span.address p span:last-child {
+  margin-right: 0;
+}
