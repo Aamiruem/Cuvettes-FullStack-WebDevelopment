@@ -112,6 +112,7 @@ import {
     from '../Redux/Slices/counterSlice';
 
 
+    
 const Counter = () => {
     // Get current count from Redux store
     const count = useSelector(state => state.counter.count);
@@ -139,7 +140,7 @@ const Counter = () => {
 
     return (
         <div>
-            {/* <h1>{count}</h1> */}
+            <h1>{count}</h1>
             <button onClick={handleIncrement}>+</button>
             <button onClick={handleDecrement}>-1</button>
             <button onClick={handleIncrementBy5}>+5</button>

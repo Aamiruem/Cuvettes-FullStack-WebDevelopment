@@ -5,3 +5,16 @@
   text-align: center;
 }
 
+.App {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+.user {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+.user h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
