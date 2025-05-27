@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
+import {useSelector} from "react-redux";
+import { useDispatch } from "react-redux";
 
 const User = () => {
+    const data = useSelector(state => state.user.user);
+    console.log("User data from Redux store:", data);
+    const dispatch = useDispatch();
+    
     const [user, setUser] = useState({
         name: '',
         email: '',
