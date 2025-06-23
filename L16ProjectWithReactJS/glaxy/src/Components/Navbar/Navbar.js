@@ -1,50 +1,37 @@
-import React from 'react'
-import { Link } from "react-router-dom";
-import "./Navbar.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './Navbar.css';
 import { FaTimes, FaBars } from 'react-icons/fa';
 
-// import { FaHome } from 'react-icons/fa'; // for example
-
 const Navbar = () => {
+    const [click, setClick] = useState(false);
 
-const [click, setClick] = React.useState(false);
-
-
-const handleClick = () => {
-    setClick(!click);
-}
+    const handleClick = () => {
+        setClick(!click);
+    };
 
     return (
-        <nav>
+        <nav className="navbar">
             <div className="logo">
                 {/* <h1>Galaxy</h1> */}
             </div>
 
-            <div className= {click ? "menu active" : "menu"}>
-                <Link to="/">Home</Link>
-                <Link to="/pricing">Pricing</Link>
-                <Link to="/training">Training</Link>
-                <Link to="/contact">Contact</Link>
+            <div className={click ? 'menu active' : 'menu'}>
+                <Link to="/" onClick={() => setClick(false)}>Home</Link>
+                <Link to="/pricing" onClick={() => setClick(false)}>Pricing</Link>
+                <Link to="/training" onClick={() => setClick(false)}>Training</Link>
+                <Link to="/contact" onClick={() => setClick(false)}>Contact</Link>
             </div>
 
             <div className="hamburger" onClick={handleClick}>
-                {/* <FaHome /> */}
-                {/* <FaTimes /> */}
-                {/* <FaBars style={{ color: "white" }} size={25} /> */}
-
-
-
-            {click ? (
-                <FaTimes style={{ color: "white" }} size={25} onClick={() => setClick(false)} />
-            ) : (
-                <FaBars style={{ color: "white" }} size={25} onClick={() => setClick(true)} />  
-            )
-            }
+                {click ? (
+                    <FaTimes style={{ color: 'white' }} size={25} />
+                ) : (
+                    <FaBars style={{ color: 'white' }} size={25} />
+                )}
             </div>
-
-
         </nav>
-    )
-}
+    );
+};
 
-export default Navbar
+export default Navbar;

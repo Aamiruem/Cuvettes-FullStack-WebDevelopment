@@ -1,18 +1,16 @@
-import React from 'react'
-
+import React from 'react';
 import Navbar from '../../Components/Navbar/Navbar';
 import Hero from './Components/Hero';
+import '../Home/HomeStyles.css';
+
 const Home = () => {
     return (
-        <div>
-            <h1>Galaxy Travels</h1>
+        <>
+            <h1>Galaxy</h1>
             <Navbar />
             <Hero />
+        </>
+    );
+};
 
-        </div>
-
-
-    )
-}
-
-export default Home
+export default Home;

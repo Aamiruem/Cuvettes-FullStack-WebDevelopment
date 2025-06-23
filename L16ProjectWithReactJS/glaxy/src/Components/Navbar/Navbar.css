@@ -1,59 +1,71 @@
-nav{
+/* Main Navbar styles */
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 0 50px;
-
-    /* height: 60px;
+    padding: 0 30px;
+    height: 10vh;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999; */
+    z-index: 9999;
+    width: 100%;
+    /* background-color: #000; */
+    /* add background to avoid overlap */
+    color: white;
 }
-nav h1 {
+
+nav .logo h1 {
     font-size: 24px;
     font-weight: bold;
 }
 
-
 nav .hamburger {
     display: none;
-    /* cursor: pointer; */
+    cursor: pointer;
 }
 
-nav .menu{
+/* Desktop Menu */
+nav .menu {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 30px;  
+    gap: 30px;
 }
 
-
+/* Mobile styles */
 @media (max-width: 700px) {
-    
     nav .hamburger {
         display: block;
     }
-    
-    .menu {
+
+    nav .menu {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         position: absolute;
-        width: 100%;
-        height: 90vh;
         top: 10vh;
         left: -100%;
-        /* right: 0; */
-        /* display: none; */
-        flex-direction: column;
+        width: 100%;
+        height: 90vh;
+        background-color: rgba(0, 0, 0, 0.95);
         gap: 30px;
-        /* background-color: #333;
-        padding: 20px; */
+        transition: left 0.3s ease-in-out;
+        z-index: 999;
     }
 
-    .active {
+    nav .menu.active {
         left: 0;
-        /* transition: left 0.3s ease-in-out; */
     }
+}
+
+
+
+nav .menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.2s;
+}
+
+nav .menu a:hover {
+    color: #00bfff;
+    /* or any highlight color */
 }
