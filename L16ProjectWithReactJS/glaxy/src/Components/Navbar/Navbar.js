@@ -20,17 +20,28 @@ const handleClick = () => {
                 {/* <h1>Galaxy</h1> */}
             </div>
 
-            <div className="menu">
+            <div className= {click ? "menu active" : "menu"}>
                 <Link to="/">Home</Link>
                 <Link to="/pricing">Pricing</Link>
                 <Link to="/training">Training</Link>
                 <Link to="/contact">Contact</Link>
             </div>
+
             <div className="hamburger" onClick={handleClick}>
                 {/* <FaHome /> */}
                 {/* <FaTimes /> */}
-                <FaBars style={{ color: "white" }} size={25} />
+                {/* <FaBars style={{ color: "white" }} size={25} /> */}
+
+
+
+            {click ? (
+                <FaTimes style={{ color: "white" }} size={25} onClick={() => setClick(false)} />
+            ) : (
+                <FaBars style={{ color: "white" }} size={25} onClick={() => setClick(true)} />  
+            )
+            }
             </div>
+
 
         </nav>
     )
