@@ -24,14 +24,14 @@
 .hero .content h1 {
     font-size: 3rem;
     color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
 }
 
 .hero .content p {
     font-size: 1.2rem;
     max-width: 600px;
     color: #fff;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); */
     margin: 0 auto;
 }
 
@@ -47,7 +47,7 @@
 .hero .content .buttons a {
     padding: 10px 20px;
     border: 2px solid #bc0808;
-    background-color: #000;
+    /* background-color: #000; */
     color: #e0e0e0;
     border-radius: 5px;
     cursor: pointer;

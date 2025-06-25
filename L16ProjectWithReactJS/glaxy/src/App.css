@@ -1,25 +1,27 @@
 /* Import Roboto font for buttons and other elements */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
 
 /* Reset default margins/padding and set box-sizing */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* background-color: #000000; */  /* Avoid enabling background on every element */
+   /* background-color: #000000; */  
+   /* Avoid enabling background on every element  */
 }
 
 /* Set default background color for entire page */
 body {
-  background-color: #000;  /* solid black background */
+  /* background-color: #000;   */
+  /* solid black background */
 }
 
 /* Apply font family and color globally to all text elements */
 h1, h2, h3, h4, h5, h6, p, a, span, li, button {
   font-family: 'Outfit', sans-serif;  /* Note: You should also import 'Outfit' from Google Fonts */
-  /* color: #fff; */
+  color: #fff;
 }
 
 /* Make list items clean */
