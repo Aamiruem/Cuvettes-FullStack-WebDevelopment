@@ -1,0 +1,205 @@
+/* Container styles */
+.trainingContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  /* Header styles */
+  .trainingHeader {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .trainingTitle {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1rem;
+  }
+  
+  .trainingSubtitle {
+    font-size: 1.25rem;
+    color: #4b5563;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Program cards */
+  .programsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (min-width: 768px) {
+    .programsGrid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .programCard {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+  }
+  
+  .programContent {
+    padding: 1.5rem;
+  }
+  
+  .programHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .programIcon {
+    margin-right: 1rem;
+  }
+  
+  .programName {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+  }
+  
+  .programDescription {
+    color: #4b5563;
+    margin-bottom: 1rem;
+  }
+  
+  .programDuration {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+  }
+  
+  .toggleButton {
+    display: flex;
+    align-items: center;
+    color: #2563eb;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+  
+  .toggleButton:hover {
+    color: #1e40af;
+  }
+  
+  .detailsSection {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .detailsTitle {
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+  }
+  
+  .topicList {
+    list-style-type: disc;
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .topicItem {
+    color: #374151;
+    margin-bottom: 0.25rem;
+  }
+  
+  .enrollButton {
+    width: 100%;
+    background-color: #2563eb;
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .enrollButton:hover {
+    background-color: #1d4ed8;
+  }
+  
+  /* Custom training section */
+  .customTraining {
+    background-color: #f9fafb;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .customTrainingTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1rem;
+  }
+  
+  .customTrainingText {
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .contactButton {
+    background-color: white;
+    border: 1px solid #2563eb;
+    color: #2563eb;
+    font-weight: 500;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.375rem;
+    transition: all 0.3s ease;
+  }
+  
+  .contactButton:hover {
+    background-color: #eff6ff;
+  }
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .programsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .programCard {
+    margin-bottom: 2rem;
+  }
+  
+  .programContent {
+    padding: 1rem;
+  }
+  
+  .programName {
+    font-size: 1.25rem;
+  }
+  
+  .programDescription,
+  .programDuration {
+    font-size: 0.875rem;
+  }
+  
+  .toggleButton {
+    font-size: 0.875rem;
+  }
+  
+  .detailsTitle {
+    font-size: 1.125rem;
+  }
+  
+  .enrollButton {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+}

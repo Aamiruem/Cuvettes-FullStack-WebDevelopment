@@ -7,6 +7,8 @@ import About from './Components/About';
 import Services from './Components/Services';
 import Modal from './Components/Modal';
 import CallToAction from './Components/CallToAction';
+import Faq from './Faq';
+// import Footer from './Components/Footer'; 
 
 const Home = () => {
     return (
@@ -18,6 +20,7 @@ const Home = () => {
             <Services />
             <Modal />
             <CallToAction />
+            <Faq />
             {/* <Footer /> */}
         </>
     );
