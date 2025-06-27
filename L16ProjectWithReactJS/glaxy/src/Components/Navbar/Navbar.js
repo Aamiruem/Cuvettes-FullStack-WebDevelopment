@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { FaTimes, FaBars } from 'react-icons/fa';
 
 const Navbar = () => {
     const [click, setClick] = useState(false);
+    const [color, setColor] = useState(false);
 
     const handleClick = () => {
         setClick(!click);
     };
 
+    const handleColor = () => {
+        if (window.scrollY >= 200) {
+            setColor(true);
+        } else {
+            setColor(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleColor);
+        return () => {
+            window.removeEventListener("scroll", handleColor);
+        };
+    }, []);
+
     return (
-        <nav className="navbar">
+        <nav className={color ? "navbar color" : "navbar"}>
             <div className="logo">
                 {/* <h1>Galaxy</h1> */}
             </div>

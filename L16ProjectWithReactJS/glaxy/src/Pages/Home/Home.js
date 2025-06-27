@@ -8,7 +8,7 @@ import Services from './Components/Services';
 import Modal from './Components/Modal';
 import CallToAction from './Components/CallToAction';
 import Faq from './Faq';
-// import Footer from './Components/Footer'; 
+import Footer from '../../Components/Footer/Footer';
 
 const Home = () => {
     return (
@@ -21,7 +21,7 @@ const Home = () => {
             <Modal />
             <CallToAction />
             <Faq />
-            {/* <Footer /> */}
+            <Footer />
         </>
     );
 };

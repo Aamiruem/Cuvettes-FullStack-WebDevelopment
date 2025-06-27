@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 
 
 const Faq = () => {
@@ -6,35 +6,39 @@ const Faq = () => {
     const data = [
         {
             question: "What is the purpose of this FAQ section?",
-            answer: "This section provides answers to common questions about our services and policies."
+            answers: "This section provides answers to common questions about our services and policies."
         },
         {
             question: "How can I contact customer support?",
-            answer: "You can reach our customer support via email at [email address] or by phone at [phone number]."
+            answers: "You can reach our customer support via email at [email address] or by phone at [phone number]."
         },
         {
             question: "What are your business hours?",
-            answer: "Our customer support is available from 9 AM to 5 PM, Monday to Friday."
+            answers: "Our customer support is available from 9 AM to 5 PM, Monday to Friday."
         },
         {
             question: "Do you offer refunds?",
-            answer: "Yes, we offer refunds within 30 days of purchase, provided the product is in its original condition."
+            answers: "Yes, we offer refunds within 30 days of purchase, provided the product is in its original condition."
         },
         {
             question: "Where can I find your privacy policy?",
-            answer: "Our privacy policy can be found at the bottom of our website or in the 'Privacy Policy' section."
+            answers: "Our privacy policy can be found at the bottom of our website or in the 'Privacy Policy' section."
         },
         {
             question: "Can I cancel my subscription?",
-            answer: "Yes, you can cancel your subscription at any time by contacting our customer support."
+            answers: "Yes, you can cancel your subscription at any time by contacting our customer support."
         },
         {
             question: "What payment methods do you accept?",
-            answer: "We accept a wide range of payment methods, including credit cards, debit cards, and PayPal."
+            answers: "We accept a wide range of payment methods, including credit cards, debit cards, and PayPal."
         }
     ]
 
 
+    const [select, setSelect] = useState(null);
+    const handleSelect = (i) => {
+        setSelect(select === i ? null : i);
+    };
 
     return (
         <>
@@ -64,15 +68,16 @@ const Faq = () => {
                 </div>
 
 
-                <div className="answer">
+                <div className="answers">
                     <p>This section provides answers to common questions about our services and policies.</p>
                 </div>
 
                 <div className="item">
                     {
-                        data.map((item) => {
+                        data.map((item, i) => {
                             return (
                                 <>
+                                    <div className="wrapper" key={i}>
                                     <div className="question" key={item.question}>
                                         <h3>{item.question}</h3>
                                         <img
@@ -82,9 +87,10 @@ const Faq = () => {
                                         />
 
                                     </div>
+                                    </div>
 
-                                    <div className="answer" key={item.answer}>
-                                        <p>{item.answer}</p>
+                                    <div className={select === i ? "answers show" :  "answers"} key={i} onClick={() => handleSelect(i)}>
+                                        <p>{item.answers}</p>
                                     </div>
                                 </>
                             )
