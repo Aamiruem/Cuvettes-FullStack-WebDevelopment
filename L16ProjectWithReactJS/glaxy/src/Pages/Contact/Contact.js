@@ -1,30 +1,17 @@
 import React from 'react'
+import Navbar from '../../Components/Navbar/Navbar'
+import Header from '../../Components/Header/Header'
+import Footer from '../../Components/Footer/Footer'
 
-const Contact = () => {
-  return (
-    <div>
-        <h1>Contact Us</h1>
-        <p>If you have any questions, feel free to reach out!</p>
-        <form>
-            <label>
-            Name:
-            <input type="text" name="name" />
-            </label>
-            <br />
-            <label>
-            Email:
-            <input type="email" name="email" />
-            </label>
-            <br />
-            <label>
-            Message:
-            <textarea name="message"></textarea>
-            </label>
-            <br />
-            <button type="submit">Send</button>
-        </form>
-    </div>
-  )
+const Contact = ({heading}) => {
+    return (
+        <>
+        <h1>{heading}</h1>
+        <Navbar />
+        <Header heading="Contact Page"/>
+        <Footer/> 
+        </>
+    )
 }
 
 export default Contact

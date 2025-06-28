@@ -37,6 +37,7 @@ const Navbar = () => {
                 <Link to="/pricing" onClick={() => setClick(false)}>Pricing</Link>
                 <Link to="/training" onClick={() => setClick(false)}>Training</Link>
                 <Link to="/contact" onClick={() => setClick(false)}>Contact</Link>
+                <Link to="/about" onClick={() => setClick(false)}>About</Link>
             </div>
 
             <div className="hamburger" onClick={handleClick}>
