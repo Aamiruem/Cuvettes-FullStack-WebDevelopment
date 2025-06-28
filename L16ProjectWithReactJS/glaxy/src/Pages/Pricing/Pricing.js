@@ -140,13 +140,17 @@ import React from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer'
+import Card from './Component/Card'
+import  './PricingStyles.css'
+
 
 const Pricing = ({heading}) => {
     return (
         <>
         <h1>{heading}</h1>
         <Navbar />
-        <Header heading="Pricing Page"/>
+        <Header heading="Pricing Page" />
+        <Card/> 
         <Footer/> 
         </>
     )
