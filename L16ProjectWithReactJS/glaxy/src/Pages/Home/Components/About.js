@@ -1,9 +1,9 @@
 import React from 'react';
 
-const About = () => {
+const About = ({ heading }) => {
     return (
         <section className="about p-4">
-            <h2 className="text-center mb-4">About Us</h2>
+            <h2 className="text-center mb-4">{heading}</h2>
 
             <figure className="text-center">
                 <img

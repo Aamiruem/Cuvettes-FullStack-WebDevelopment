@@ -16,7 +16,7 @@ const Home = () => {
             <h1>Galaxy</h1>
             <Navbar />
             <Hero />
-            <About />
+            <About heading="About Us" />
             <Services />
             <Modal />
             <CallToAction />
