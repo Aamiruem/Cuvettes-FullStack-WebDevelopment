@@ -81,3 +81,5 @@ myWriteStream.on('error', (err) => {
 myWriteStream.on('finish', () => {
     console.log('Write operation completed');
 });
+
+
