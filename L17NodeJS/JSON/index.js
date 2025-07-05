@@ -80,7 +80,7 @@ fs.writeFile("data.json", JSONData, () => {
     // console.log(jsonData);
 });
 
-fs.readFile("data.json", "utf-8" , (err, data) => {
+fs.readFile("data.json", "utf-8", (err, data) => {
     if (err) {
         console.error("Error reading file:", err);
     } else {
@@ -88,4 +88,4 @@ fs.readFile("data.json", "utf-8" , (err, data) => {
         console.log("Data read from data.json:");
         console.log(parsedData);
     }
-})
+});
