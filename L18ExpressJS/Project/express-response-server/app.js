@@ -1,3 +1,52 @@
+// const express = require('express');
+// const app = express();
+
+
+
+// app.get('/get', (req, res) => {
+
+//     res.send('GET request');
+
+// });
+
+
+
+// app.post('/post', (req, res) => {
+
+//     res.send('POST request');
+
+// });
+
+
+
+// app.put('/put', (req, res) => {
+
+//     res.send('PUT request');
+
+// });
+
+
+
+// app.delete('/delete', (req, res) => {
+
+//     res.send('DELETE request');
+
+// });
+
+
+
+// app.listen(3000, () => {
+
+//     console.log('Server listening on port 3000');
+
+// });
+
+
+
+
+
+
+
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -8,7 +57,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files (including CSS)
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Custom middleware to log requests
 app.use((req, res, next) => {
@@ -16,33 +65,9 @@ app.use((req, res, next) => {
     next();
 });
 
-// Home route
+// Home route - using sendFile to serve an HTML file
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
-    res.sendFile(path.join(__dirname, "/index.html"));
-    res.send(`
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Express Response Server</title>
-      <link rel="stylesheet" href="/style.css">
-    </head>
-    <body>
-      <div class="container">
-        <h1>Welcome to the Express Response Server</h1>
-        <p>Try these endpoints:</p>
-        <ul>
-          <li><strong>GET</strong> /api/data</li>
-          <li><strong>POST</strong> /api/data</li>
-          <li><strong>PUT</strong> /api/data/:id</li>
-          <li><strong>DELETE</strong> /api/data/:id</li>
-        </ul>
-      </div>
-    </body>
-    </html>
-  `);
 });
 
 // GET route
@@ -113,24 +138,7 @@ app.delete('/api/data/:id', (req, res) => {
 
 // 404 handler
 app.use((req, res) => {
-    res.status(404).send(`
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>404 Not Found</title>
-      <link rel="stylesheet" href="/style.css">
-    </head>
-    <body>
-      <div class="container">
-        <h1>404 - Not Found</h1>
-        <p>The requested URL ${req.url} was not found on this server.</p>
-        <a href="/">Go back home</a>
-      </div>
-    </body>
-    </html>
-  `);
+    res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
 });
 
 // Start the server
