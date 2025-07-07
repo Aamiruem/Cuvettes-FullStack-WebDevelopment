@@ -80,20 +80,20 @@ app.use((req, res) => {
     <!DOCTYPE html>
     <html lang="en">
     <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>404 Not Found</title>
-      <link rel="stylesheet" href="/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <link rel="stylesheet" href="/style.css">
     </head>
     <body>
-      <div class="container">
+    <div class="container">
         <h1>404 - Not Found</h1>
         <p>The requested URL ${req.url} was not found on this server.</p>
         <a href="/">Go back home</a>
-      </div>
+    </div>
     </body>
     </html>
-  `);
+`);
 });
 
 app.listen(port, () => {
