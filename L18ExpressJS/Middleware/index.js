@@ -4,11 +4,55 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 
+// const auth = (req, res, next) => {
+//     res.send("<h1>our auth middleware</h1>");
+//     console.log("Authenticating...");
+//     next();
+// };
+
+
+// const auth = (req, res, next) => {
+//     const login = false;
+//     if (login) {
+//         res.send("<h1>Please login first to continue</h1>")
+//         next();
+//     } else {
+//         res.status(401).send("<h1>Unauthorized</h1>");
+//     }
+// };
+
+
+
+
+// const auth = (req, res, next) => {
+//     const login = true; // or false based on actual auth check
+
+//     if (login) {
+//         next(); // ✅ User is logged in
+//     } else {
+//         res.status(401).send("<h1>Please login first to continue</h1>"); // ❌ Unauthorized
+//     }
+// };
+
+
+
+
+
+
+
+
 const auth = (req, res, next) => {
-    res.send("<h1>our auth middleware</h1>");
-    console.log("Authenticating...");
-    next();
+    const login = true; // or false based on actual auth check
+
+    if (login) {
+        res.send("<h1>Please login first to continue</h1>");
+    } else {
+        next(); // ✅ User is logged in
+    }
 };
+
+
+
 app.use(auth);
 
 app.get("/", (req, res) => {
