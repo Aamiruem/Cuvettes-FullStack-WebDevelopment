@@ -4,7 +4,7 @@
   "description": "Project learning",
   "main": "Project.js",
   "scripts": {
-    "test": "all command"
+    "start": "node Project.js"
   },
   "keywords": [
     "mongodb"
