@@ -1,75 +1,87 @@
-const { MongoClient } = require('mongodb');
-const mongoose = require("mongoose");
+// index.js
+const mongoose = require('mongoose');
+require('dotenv').config(); // Load environment variables
 
-async function main() {
-    const uri = "mongodb://localhost:27017/library";
-    const client = new MongoClient(uri);
-
+// Database connection function
+async function connectDB() {
     try {
-        await client.connect();
-        const db = client.db();
-
-        // Create collection with validation
-        await db.createCollection("books", {
-            validator: {
-                $jsonSchema: {
-                    bsonType: "object",
-                    required: ["title", "author", "price"],
-                    properties: {
-                        title: {
-                            bsonType: "string",
-                            description: "must be a string and is required",
-                            minLength: 2,
-                            maxLength: 100
-                        },
-                        author: {
-                            bsonType: "string",
-                            description: "must be a string and is required",
-                            pattern: "^[a-zA-Z ]+$"
-                        },
-                        price: {
-                            bsonType: "number",
-                            description: "must be a number and is required",
-                            minimum: 0,
-                            maximum: 1000
-                        },
-                        publishedDate: {
-                            bsonType: "date",
-                            description: "must be a valid date if provided"
-                        },
-                        inStock: {
-                            bsonType: "bool",
-                            description: "must be a boolean if provided"
-                        }
-                    }
-                }
-            },
-            validationAction: "error",
-            validationLevel: "strict"
+        await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/library', {
+            serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+            socketTimeoutMS: 45000, // Close sockets after 45s of inactivity
         });
+        console.log('✅ MongoDB connected successfully');
 
-        console.log("Collection created with validation rules");
+        // Verify connection is ready
+        const db = mongoose.connection.db;
+        await db.command({ ping: 1 });
+        console.log('🗄️ Database connection is active');
 
-        // Test validation
-        const books = db.collection("books");
-        try {
-            await books.insertOne({
-                title: "Node.js Design Patterns",
-                author: "Mario Casciaro",
-                price: 39.99,
-                publishedDate: new Date()
-            });
-            console.log("Valid document inserted");
-        } catch (err) {
-            console.error("Validation error:", err.message);
-        }
-    } finally {
-        await client.close();
+        return true;
+    } catch (err) {
+        console.error('❌ MongoDB connection error:', err.message);
+        // Graceful shutdown
+        await mongoose.disconnect();
+        process.exit(1);
     }
 }
 
-main().catch(console.error);
+// Book Schema with validation
+const bookSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: [true, 'Title is required'],
+        trim: true,
+        minlength: [2, 'Title must be at least 2 characters'],
+        maxlength: [100, 'Title cannot exceed 100 characters']
+    },
+    author: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true,
+        min: [0, 'Price cannot be negative']
+    }
+}, { timestamps: true });
 
+// Create Book model
+const Book = mongoose.model('Book', bookSchema);
 
+// Main application function
+async function main() {
+    // 1. Connect to database
+    const isConnected = await connectDB();
+    if (!isConnected) return;
 
+    try {
+        // 2. Create and save a book
+        const newBook = new Book({
+            title: 'Node.js Design Patterns',
+            author: 'kamran Hussain',
+            price: 39.99
+        });
 
+        const savedBook = await newBook.save();
+        console.log('📚 Book saved:', savedBook);
+
+        // 3. Query all books
+        const books = await Book.find();
+        console.log('📚 All books:', books);
+
+    } catch (err) {
+        console.error('🔴 Error:', err.message);
+        if (err.name === 'ValidationError') {
+            for (const field in err.errors) {
+                console.error(`- ${field}: ${err.errors[field].message}`);
+            }
+        }
+    } finally {
+        // Close connection
+        await mongoose.disconnect();
+        console.log('🔌 MongoDB connection closed');
+    }
+}
+
+// Start the application
+main();
