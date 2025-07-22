@@ -13,6 +13,9 @@ const mentorSchema = new mongoose.Schema({
         required: true
     }
 })
+
+const user1 = new mongoose.model('mentor', mentorSchema);
+
 module.exports = mongoose.model('mentor', mentorSchema);    
 
 const mentor = new mongoose.model('mentor', mentorSchema);
