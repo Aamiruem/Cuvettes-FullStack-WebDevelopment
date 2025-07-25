@@ -118,4 +118,5 @@ app.get("/dashboard", auth, (req, res) => {
   res.status(200).send("Dashboard");
 });
 
+// Exporting app for testing purposes
 module.exports = app;
