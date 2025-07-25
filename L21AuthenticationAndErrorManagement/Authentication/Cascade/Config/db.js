@@ -7,7 +7,7 @@ exports.connect = async () => {
       useNewUrlParser: true,
       UseUnifiedTopology: true,
     })
-    .then(console.log("Connection Sucess"))
+    .then(console.log("Connection Success"))
     .catch((error) => {
       console.log("Connection failed");
       console.log(`${error}`);

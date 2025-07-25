@@ -7,7 +7,8 @@ const cookieParser = require("cookie-parser");
 // * Import the model -User
 const User = require("./Model/User");
 const auth = require("./middleware/auth");
-
+const punycode = require('punycode/'); // ✅ from npm
+// const { check, validationResult } = require('express-validator'); // ✅ from npm
 const { SECRET } = process.env;
 
 const app = express();
