@@ -1,38 +1,143 @@
+/* Reset some default browser styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Main app container */
 .App {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Header */
+.App h1 {
+  color: #333;
+  margin-bottom: 20px;
+  background-color: #007bfc;
   color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+/* Button styling */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bfc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+button:hover {
+  background-color: #005fcc;
+}
+
+/* Workout list */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+li strong {
+  color: #007bfc;
+}
+
+
+/* Footer */
+footer {
+  margin-top: 20px;
+  text-align: center;
+  color: #777;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .App {
+    margin: 20px;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+
+
+
+.workout-item {
+  background: #f0f8ff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-left: 5px solid #007bfc;
+  border-radius: 8px;
+  text-align: left;
+}
+.workout-item strong {
+  color: #333;
+}
+
+
+.workout-item p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.workout-item span {
+  font-size: 0.9em;
+  color: #888;
+}
+
+.workout-item button {
+  background-color: #28a745;
+  margin-top: 10px;
+}
+
+.workout-item button:hover {
+  background-color: #218838;
+}
+
+
+
+/* Error message */
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+
+
+
+.record {
+  background-color: #eaf6ff;
+  border-left: 5px solid #007bff;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.record h2 {
+  margin: 0 0 8px;
+  color: #333;
+}
+
+.record p {
+  margin: 4px 0;
+  color: #555;
 }
