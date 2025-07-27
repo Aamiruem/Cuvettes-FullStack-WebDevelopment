@@ -3,20 +3,21 @@ const workout = require('../models/workoutModel');
 const router = express.Router();
 
 //Require Controller
-const { getWorkouts } = require('../controller/workoutController');
+const { getWorkouts, getWorkout, createWorkout, updateWorkout, deleteWorkout } = require('../controllers/workoutController');
 
 // Get all workouts and Get entire data
 router.get('/', getWorkouts);
 
+// Get a single workout by ID
+router.get('/:id', getWorkout);
 
-// Create a new workout
-router.post('/', async (req, res) => {
-    try {
-        const workout = await workout.create(req.body);
-        res.status(201).json(workout);
-    } catch (error) {
-        res.status(400).json({ error: err.message });
-    }
-});
+//create record 
+router.post('/', createWorkout);
+
+//Update a workout 
+router.patch('/:id', updateWorkout);
+
+// Delete a workout 
+router.delete('/:id', deleteWorkout); // Uncomment when deleteWorkout is implemented
 
 module.exports = router;
