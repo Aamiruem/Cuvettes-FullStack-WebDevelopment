@@ -468,7 +468,7 @@ function App() {
   const fetchWorkouts = async () => {
     try {
       const response = await axios.get(API_BASE_URL); // fetch all workouts
-      setWorkouts(response.data);                     // update UI with data
+      setWorkouts(response.data);                     // update UI with data on display 
     } catch (error) {
       console.error('Error fetching workouts:', error.message);
     }
