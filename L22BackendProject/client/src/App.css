@@ -141,3 +141,515 @@ footer {
   margin: 4px 0;
   color: #555;
 }
+
+
+
+
+
+
+
+
+/* App.css */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #f0f4f8;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+form input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+form label {
+  font-weight: 600;
+  color: #555;
+}
+
+form button {
+  width: 120px;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+.record {
+  background: #e9f0f5;
+  margin: 15px 0;
+  padding: 15px;
+  border-left: 5px solid #007bff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.record h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #222;
+}
+
+.record p {
+  margin: 6px 0;
+  color: #555;
+}
+
+.record button {
+  margin-right: 10px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.record button:hover {
+  background-color: #218838;
+}
+
+.record button:last-child {
+  background-color: #dc3545;
+}
+
+.record button:last-child:hover {
+  background-color: #c82333;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .App {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  form button {
+    width: 100%;
+  }
+
+  .record {
+    padding: 10px;
+  }
+
+  .record h2 {
+    font-size: 1.2rem;
+  }
+}
+
+
+
+/* App.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #111;
+  color: #f8f8f8;
+}
+
+.App {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 170, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #00ffa2;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* FORM STYLING */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #222;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-bottom: 40px;
+}
+
+form label {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #ccc;
+}
+
+form input {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background-color: #111;
+  color: #fff;
+}
+
+form input::placeholder {
+  color: #777;
+}
+
+form button {
+  background: linear-gradient(135deg, #00ffa2, #00c6ff);
+  color: #000;
+  border: none;
+  padding: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+form button:hover {
+  transform: scale(1.05);
+}
+
+/* WORKOUT CARDS */
+.record {
+  background: #181818;
+  border-left: 6px solid #00ffa2;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.05);
+}
+
+.record h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+  color: #00ffa2;
+}
+
+.record p {
+  margin: 6px 0;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+/* ACTION BUTTONS */
+.record button {
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.record button:first-of-type {
+  background: #00c6ff;
+  color: #000;
+}
+
+.record button:first-of-type:hover {
+  background: #009ecb;
+}
+
+.record button:last-of-type {
+  background: #ff4d4d;
+  color: #fff;
+}
+
+.record button:last-of-type:hover {
+  background: #cc0000;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:focus,
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #00ffa2;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .App {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  form,
+  .record {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  form button {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+/* Base Styles */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --danger-color: #e74c3c;
+  --light-color: #ecf0f1;
+  --dark-color: #2c3e50;
+  --gray-color: #95a5a6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.form-container {
+  flex: 1;
+  max-width: 500px;
+  padding: 2rem;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.workouts-container {
+  flex: 2;
+  padding: 2rem;
+  background-color: #f9f9f9;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-title {
+  color: var(--dark-color);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Button Styles */
+.btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+}
+
+.btn-secondary {
+  background-color: var(--gray-color);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #7f8c8d;
+}
+
+.btn-edit {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #27ae60;
+}
+
+.btn-delete {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+.btn-refresh {
+  background-color: var(--dark-color);
+  color: white;
+}
+
+.btn-refresh:hover {
+  background-color: #1a252f;
+}
+
+/* Workouts List Styles */
+.workouts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.workouts-header h1 {
+  color: var(--dark-color);
+}
+
+.workouts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.workout-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.workout-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.workout-card h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.workout-details {
+  margin-bottom: 1.5rem;
+}
+
+.workout-details p {
+  margin-bottom: 0.5rem;
+}
+
+.workout-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.no-workouts {
+  text-align: center;
+  color: var(--gray-color);
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .form-container {
+    max-width: 100%;
+  }
+}
