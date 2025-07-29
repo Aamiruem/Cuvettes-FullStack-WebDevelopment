@@ -1,10 +1,15 @@
 import React from 'react'
+import "./HomeStyles.css";
+import Records from '../../Components/Records/Records';
+import Form from "../../Components/Form/Form";
+
 
 const Home = () => {
   return (
-    <div>
-      
-    </div>
+    <section className='home-section'>
+    <Records/>
+    <Form/>
+    </section>
   )
 }
 
