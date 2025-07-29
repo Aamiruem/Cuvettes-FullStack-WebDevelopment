@@ -426,18 +426,274 @@
 
 
 
-// Import necessary tools and styles
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import './App.css'; // custom styling
+// // Import necessary tools and styles
+// import { useState, useEffect } from 'react';
+// import axios from 'axios';
+// import './App.css'; // custom styling
+
+
+// function App() {
+//   // ======== STATE MANAGEMENT ========
+
+//   // Store the list of workouts
+//   const [workouts, setWorkouts] = useState([]);
+
+//   // Store the form input values
+//   const [formData, setFormData] = useState({
+//     title: '',
+//     load: '',
+//     reps: '',
+//     notes: ''
+//   });
+
+//   // Track if we are editing an existing workout (null = create mode)
+//   const [editingId, setEditingId] = useState(null);
+
+//   // Base URL for the API
+//   const API_BASE_URL = 'http://localhost:4000/api/workouts';
+
+//   // ======== API FUNCTIONS (CRUD) ========
+
+//   // Create a new workout (POST)
+//   const createWorkout = async () => {
+//     try {
+//       await axios.post(API_BASE_URL, formData); // send new data
+//       fetchWorkouts(); // refresh list
+//       resetForm();     // clear form
+//     } catch (error) {
+//       console.error('Error creating workout:', error.message);
+//     }
+//   };
+
+//   // Read (GET) all workouts from the API
+//   const fetchWorkouts = async () => {
+//     try {
+//       const response = await axios.get(API_BASE_URL); // fetch all workouts
+//       setWorkouts(response.data);                     // update UI with data on display 
+//     } catch (error) {
+//       console.error('Error fetching workouts:', error.message);
+//     }
+//   };
+
+//   // Update (PATCH) an existing workout
+//   const updateWorkout = async () => {
+//     try {
+//       await axios.patch(`${API_BASE_URL}/${editingId}`, formData); // send updated data
+//       fetchWorkouts();     // refresh list
+//       resetForm();         // clear form
+//       setEditingId(null);  // exit edit mode
+//     } catch (error) {
+//       console.error('Error updating workout:', error.message);
+//     }
+//   };
+
+//   // Delete (DELETE) a workout by its ID
+//   const deleteWorkout = async (id) => {
+//     try {
+//       await axios.delete(`${API_BASE_URL}/${id}`); // delete by id
+//       fetchWorkouts(); // refresh list
+//     } catch (error) {
+//       console.error('Error deleting workout:', error.message);
+//     }
+//   };
+
+//   // ======== HELPERS ========
+
+//   // Fetch workouts when the component first loads (like componentDidMount)
+//   useEffect(() => {
+//     fetchWorkouts();
+//   }, []);
+
+//   // Handle typing in form fields (input changes)
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target; // get the name and value from input
+//     setFormData({
+//       ...formData,          // spread previous data
+//       [name]: value         // update the specific field by name
+//     });
+//   };
+
+//   // Reset form to empty values
+//   const resetForm = () => {
+//     setFormData({
+//       title: '',
+//       load: '',
+//       reps: '',
+//       notes: ''
+//     });
+//   };
+
+//   // Handle form submit — either create or update
+//   const handleSubmit = (e) => {
+//     e.preventDefault(); // prevent page reload
+//     if (editingId) {
+//       updateWorkout();  // if editing, call update
+//     } else {
+//       createWorkout();  // if not, create new workout
+//     }
+//   };
+
+//   // When Edit is clicked, load workout data into form and enter edit mode
+//   const startEditing = (workout) => {
+//     setFormData({
+//       title: workout.title,
+//       load: workout.load,
+//       reps: workout.reps,
+//       notes: workout.notes || ''
+//     });
+//     setEditingId(workout._id); // mark the workout being edited
+//   };
+
+//   // Cancel editing and reset form
+//   const cancelEditing = () => {
+//     setEditingId(null); // exit edit mode
+//     resetForm();        // clear form
+//   };
+
+//   // ======== UI RENDERING ========
+//   return (
+//     <div className="app-container">
+
+//       {/* Workout Form */}
+//       <div className="form-container">
+//         <form onSubmit={handleSubmit}>
+//           <h1 className="form-title">{editingId ? 'Update Workout' : 'Create Workout'}</h1>
+
+//           {/* Input: Title */}
+//           <div className="form-group">
+//             <label htmlFor="title">Title</label>
+//             <input
+//               type="text"
+//               name="title"
+//               value={formData.title}
+//               onChange={handleInputChange}
+//               required
+//               placeholder="Workout Title"
+//             />
+//           </div>
+
+//           {/* Input: Load */}
+//           <div className="form-group">
+//             <label htmlFor="load">Load (kg)</label>
+//             <input
+//               type="number"
+//               name="load"
+//               value={formData.load}
+//               onChange={handleInputChange}
+//               required
+//               placeholder="Load in kg"
+//             />
+//           </div>
+
+//           {/* Input: Reps */}
+//           <div className="form-group">
+//             <label htmlFor="reps">Reps</label>
+//             <input
+//               type="number"
+//               name="reps"
+//               value={formData.reps}
+//               onChange={handleInputChange}
+//               required
+//               placeholder="Number of reps"
+//             />
+//           </div>
+
+//           {/* Input: Notes */}
+//           <div className="form-group">
+//             <label htmlFor="notes">Notes</label>
+//             <textarea
+//               name="notes"
+//               value={formData.notes}
+//               onChange={handleInputChange}
+//               placeholder="Optional notes"
+//               rows="3"
+//             />
+//           </div>
+
+//           {/* Submit + Cancel Buttons */}
+//           <div className="form-actions">
+//             <button type="submit" className="btn btn-primary">
+//               {editingId ? 'Update' : 'Save'} {/* label changes based on mode */}
+//             </button>
+
+//             {/* Show cancel button only in edit mode */}
+//             {editingId && (
+//               <button type="button" className="btn btn-secondary" onClick={cancelEditing}>
+//                 Cancel
+//               </button>
+//             )}
+//           </div>
+//         </form>
+//       </div>
+
+//       {/* Workout List */}
+//       <div className="workouts-container">
+//         <div className="workouts-header">
+//           <h1>Your Workouts</h1>
+//           <button className="btn btn-refresh" onClick={fetchWorkouts}>
+//             Refresh Workouts
+//           </button>
+//         </div>
+
+//         {/* Show workouts or fallback message */}
+//         {workouts.length > 0 ? (
+//           <div className="workouts-grid">
+//             {workouts.map((workout) => (
+//               <div key={workout._id} className="workout-card">
+//                 <h2>{workout.title}</h2>
+//                 <div className="workout-details">
+//                   <p><strong>Reps:</strong> {workout.reps}</p>
+//                   <p><strong>Load:</strong> {workout.load} kg</p>
+//                   {workout.notes && <p><strong>Notes:</strong> {workout.notes}</p>}
+//                 </div>
+
+//                 {/* Edit and Delete buttons */}
+//                 <div className="workout-actions">
+//                   <button className="btn btn-edit" onClick={() => startEditing(workout)}>
+//                     Edit
+//                   </button>
+//                   <button className="btn btn-delete" onClick={() => deleteWorkout(workout._id)}>
+//                     Delete
+//                   </button>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         ) : (
+//           <p className="no-workouts">No workouts found. Create your first workout!</p>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+// Importing necessary hooks and dependencies
+import { useState, useEffect } from 'react'; // React hooks
+import axios from 'axios'; // HTTP requests
+import './App.css'; // Styles
+// import "./NavbarStyles.css";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import BrowserRouter as Router
+
+// Components
+import Navbar from './Components/Navbar';
+import Home from './Pages/Home';
 
 function App() {
-  // ======== STATE MANAGEMENT ========
-
-  // Store the list of workouts
   const [workouts, setWorkouts] = useState([]);
 
-  // Store the form input values
   const [formData, setFormData] = useState({
     title: '',
     load: '',
@@ -445,74 +701,61 @@ function App() {
     notes: ''
   });
 
-  // Track if we are editing an existing workout (null = create mode)
   const [editingId, setEditingId] = useState(null);
 
-  // Base URL for the API
   const API_BASE_URL = 'http://localhost:4000/api/workouts';
 
-  // ======== API FUNCTIONS (CRUD) ========
-
-  // Create a new workout (POST)
   const createWorkout = async () => {
     try {
-      await axios.post(API_BASE_URL, formData); // send new data
-      fetchWorkouts(); // refresh list
-      resetForm();     // clear form
+      await axios.post(API_BASE_URL, formData);
+      fetchWorkouts();
+      resetForm();
     } catch (error) {
       console.error('Error creating workout:', error.message);
     }
   };
 
-  // Read (GET) all workouts from the API
   const fetchWorkouts = async () => {
     try {
-      const response = await axios.get(API_BASE_URL); // fetch all workouts
-      setWorkouts(response.data);                     // update UI with data on display 
+      const response = await axios.get(API_BASE_URL);
+      setWorkouts(response.data);
     } catch (error) {
       console.error('Error fetching workouts:', error.message);
     }
   };
 
-  // Update (PATCH) an existing workout
   const updateWorkout = async () => {
     try {
-      await axios.patch(`${API_BASE_URL}/${editingId}`, formData); // send updated data
-      fetchWorkouts();     // refresh list
-      resetForm();         // clear form
-      setEditingId(null);  // exit edit mode
+      await axios.patch(`${API_BASE_URL}/${editingId}`, formData);
+      fetchWorkouts();
+      resetForm();
+      setEditingId(null);
     } catch (error) {
       console.error('Error updating workout:', error.message);
     }
   };
 
-  // Delete (DELETE) a workout by its ID
   const deleteWorkout = async (id) => {
     try {
-      await axios.delete(`${API_BASE_URL}/${id}`); // delete by id
-      fetchWorkouts(); // refresh list
+      await axios.delete(`${API_BASE_URL}/${id}`);
+      fetchWorkouts();
     } catch (error) {
       console.error('Error deleting workout:', error.message);
     }
   };
 
-  // ======== HELPERS ========
-
-  // Fetch workouts when the component first loads (like componentDidMount)
   useEffect(() => {
     fetchWorkouts();
   }, []);
 
-  // Handle typing in form fields (input changes)
   const handleInputChange = (e) => {
-    const { name, value } = e.target; // get the name and value from input
+    const { name, value } = e.target;
     setFormData({
-      ...formData,          // spread previous data
-      [name]: value         // update the specific field by name
+      ...formData,
+      [name]: value
     });
   };
 
-  // Reset form to empty values
   const resetForm = () => {
     setFormData({
       title: '',
@@ -522,17 +765,15 @@ function App() {
     });
   };
 
-  // Handle form submit — either create or update
   const handleSubmit = (e) => {
-    e.preventDefault(); // prevent page reload
+    e.preventDefault();
     if (editingId) {
-      updateWorkout();  // if editing, call update
+      updateWorkout();
     } else {
-      createWorkout();  // if not, create new workout
+      createWorkout();
     }
   };
 
-  // When Edit is clicked, load workout data into form and enter edit mode
   const startEditing = (workout) => {
     setFormData({
       title: workout.title,
@@ -540,25 +781,23 @@ function App() {
       reps: workout.reps,
       notes: workout.notes || ''
     });
-    setEditingId(workout._id); // mark the workout being edited
+    setEditingId(workout._id);
   };
 
-  // Cancel editing and reset form
   const cancelEditing = () => {
-    setEditingId(null); // exit edit mode
-    resetForm();        // clear form
+    setEditingId(null);
+    resetForm();
   };
 
-  // ======== UI RENDERING ========
   return (
     <div className="app-container">
+      
 
       {/* Workout Form */}
       <div className="form-container">
         <form onSubmit={handleSubmit}>
           <h1 className="form-title">{editingId ? 'Update Workout' : 'Create Workout'}</h1>
 
-          {/* Input: Title */}
           <div className="form-group">
             <label htmlFor="title">Title</label>
             <input
@@ -571,7 +810,6 @@ function App() {
             />
           </div>
 
-          {/* Input: Load */}
           <div className="form-group">
             <label htmlFor="load">Load (kg)</label>
             <input
@@ -584,7 +822,6 @@ function App() {
             />
           </div>
 
-          {/* Input: Reps */}
           <div className="form-group">
             <label htmlFor="reps">Reps</label>
             <input
@@ -597,7 +834,6 @@ function App() {
             />
           </div>
 
-          {/* Input: Notes */}
           <div className="form-group">
             <label htmlFor="notes">Notes</label>
             <textarea
@@ -609,13 +845,10 @@ function App() {
             />
           </div>
 
-          {/* Submit + Cancel Buttons */}
           <div className="form-actions">
             <button type="submit" className="btn btn-primary">
-              {editingId ? 'Update' : 'Save'} {/* label changes based on mode */}
+              {editingId ? 'Update' : 'Save'}
             </button>
-
-            {/* Show cancel button only in edit mode */}
             {editingId && (
               <button type="button" className="btn btn-secondary" onClick={cancelEditing}>
                 Cancel
@@ -625,7 +858,7 @@ function App() {
         </form>
       </div>
 
-      {/* Workout List */}
+      {/* Workout Cards */}
       <div className="workouts-container">
         <div className="workouts-header">
           <h1>Your Workouts</h1>
@@ -634,7 +867,6 @@ function App() {
           </button>
         </div>
 
-        {/* Show workouts or fallback message */}
         {workouts.length > 0 ? (
           <div className="workouts-grid">
             {workouts.map((workout) => (
@@ -646,7 +878,6 @@ function App() {
                   {workout.notes && <p><strong>Notes:</strong> {workout.notes}</p>}
                 </div>
 
-                {/* Edit and Delete buttons */}
                 <div className="workout-actions">
                   <button className="btn btn-edit" onClick={() => startEditing(workout)}>
                     Edit
@@ -662,6 +893,14 @@ function App() {
           <p className="no-workouts">No workouts found. Create your first workout!</p>
         )}
       </div>
+
+      {/* Routing for pages */}
+      {/* <Router> */}
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      {/* </Router> */}
     </div>
   );
 }
