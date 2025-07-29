@@ -681,15 +681,14 @@
 
 
 // Importing necessary hooks and dependencies
-import { useState, useEffect } from 'react'; // React hooks
-import axios from 'axios'; // HTTP requests
-import './App.css'; // Styles
-// import "./NavbarStyles.css";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import BrowserRouter as Router
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import './App.css';
+import { Routes, Route } from 'react-router-dom'; // Just Routes here
 
 // Components
 import Navbar from './Components/Navbar';
-import Home from './Pages/Home';
+import Home from './Pages/Home/Home'; // Adjust path as needed
 
 function App() {
   const [workouts, setWorkouts] = useState([]);
@@ -702,7 +701,6 @@ function App() {
   });
 
   const [editingId, setEditingId] = useState(null);
-
   const API_BASE_URL = 'http://localhost:4000/api/workouts';
 
   const createWorkout = async () => {
@@ -767,11 +765,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (editingId) {
-      updateWorkout();
-    } else {
-      createWorkout();
-    }
+    editingId ? updateWorkout() : createWorkout();
   };
 
   const startEditing = (workout) => {
@@ -791,7 +785,7 @@ function App() {
 
   return (
     <div className="app-container">
-      
+      <Navbar />
 
       {/* Workout Form */}
       <div className="form-container">
@@ -894,13 +888,11 @@ function App() {
         )}
       </div>
 
-      {/* Routing for pages */}
-      {/* <Router> */}
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      {/* </Router> */}
+      {/* Routes for additional pages */}
+      <Routes>
+        {/* <Navbar /> */}
+        <Route path="/" element={<Home />} />
+      </Routes>
     </div>
   );
 }
