@@ -63,80 +63,173 @@
 
 
 
-
-
-
-// Import styles specific to this component
 import "./RecordStyle.css";
+import { useEffect, useContext, useState } from 'react';
+import axios from 'axios';
+import { Data } from '../../Context/WorkoutContext';
 
-// Import necessary hooks and dependencies
-import { useEffect, useContext } from 'react';
-import axios from 'axios'; // HTTP client for API calls
-import { Data } from '../../Context/WorkoutContext'; // Context to manage global workout state
-
-// Define the Records component
 const Records = () => {
-    // Destructure the context value (workouts and setWorkouts function)
-    const [workouts, setWorkouts] = useContext(Data);
+    const { workouts, setWorkouts } = useContext(Data);
 
-    // useEffect hook runs once after component mounts (empty dependency array [])
-    useEffect(() => {
-        // Async function to fetch workout data
-        const getWorkouts = async () => {
-            try {
-                const response = await axios.get('http://localhost:4000/api/workouts'); // Fetch data from backend
-                console.log(response.data); // Log the result to browser console
-                setWorkouts(response.data); // Update state in context
-            } catch (error) {
-                console.error('Error fetching data:', error.message); // Log error message if request fails
-            }
-        };
+    const [editingId, setEditingId] = useState(null);
+    const [formData, setFormData] = useState({
+        title: '',
+        load: '',
+        reps: '',
+        notes: ''
+    });
 
-        getWorkouts(); // Call the function
-    }, []); // [] ensures it only runs once after initial render
+    const API_BASE_URL = 'http://localhost:4000/api/workouts';
 
-    // Function to delete a workout by ID
+    const fetchWorkouts = async () => {
+        try {
+            const response = await axios.get(API_BASE_URL);
+            setWorkouts(response.data);
+        } catch (error) {
+            console.error('Error fetching workouts:', error.message);
+        }
+    };
+
+    const createWorkout = async () => {
+        try {
+            await axios.post(API_BASE_URL, {
+                ...formData,
+                reps: Number(formData.reps),
+                load: Number(formData.load)
+            });
+            fetchWorkouts();
+            resetForm();
+        } catch (error) {
+            console.error('Error creating workout:', error.message);
+        }
+    };
+
+    const updateWorkout = async () => {
+        try {
+            await axios.patch(`${API_BASE_URL}/${editingId}`, {
+                ...formData,
+                reps: Number(formData.reps),
+                load: Number(formData.load)
+            });
+            fetchWorkouts();
+            resetForm();
+            setEditingId(null);
+        } catch (error) {
+            console.error('Error updating workout:', error.message);
+        }
+    };
+
     const deleteWorkout = async (id) => {
         try {
-            // Call DELETE endpoint on backend
-            await axios.delete(`http://localhost:4000/api/workouts/${id}`);
-            // Update local state by filtering out the deleted workout
-            setWorkouts(workouts.filter(workout => workout._id !== id));
+            await axios.delete(`${API_BASE_URL}/${id}`);
+            fetchWorkouts();
         } catch (error) {
             console.error('Error deleting workout:', error.message);
         }
     };
 
-    // JSX to render UI
+    useEffect(() => {
+        fetchWorkouts();
+    }, []);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const resetForm = () => {
+        setFormData({
+            title: '',
+            load: '',
+            reps: '',
+            notes: ''
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        editingId ? updateWorkout() : createWorkout();
+    };
+
+    const startEditing = (workout) => {
+        setFormData({
+            title: workout.title,
+            load: workout.load,
+            reps: workout.reps,
+            notes: workout.notes || ''
+        });
+        setEditingId(workout._id);
+    };
+
+    const cancelEditing = () => {
+        resetForm();
+        setEditingId(null);
+    };
+
     return (
-        <div>
+        <div className="record-container">
             <h2>Workout Records</h2>
 
-            {/* Conditional rendering: If workouts are fetched */}
-            {workouts ? (
-                // Map through each workout item
-                workouts.map((item) => (
-                    <div key={item._id} className="record">
-                        <h3>{item.title}</h3>
-                        <p>Reps: {item.reps}</p>
-                        <p>Load: {item.load} kg</p>
-                        {/* Render notes only if present */}
-                        {item.notes && <p>Notes: {item.notes}</p>}
+            <form onSubmit={handleSubmit} className="record-form">
+                <input
+                    type="text"
+                    name="title"
+                    placeholder="Title"
+                    value={formData.title}
+                    onChange={handleInputChange}
+                    required
+                />
+                <input
+                    type="number"
+                    name="reps"
+                    placeholder="Reps"
+                    value={formData.reps}
+                    onChange={handleInputChange}
+                    required
+                />
+                <input
+                    type="number"
+                    name="load"
+                    placeholder="Load (kg)"
+                    value={formData.load}
+                    onChange={handleInputChange}
+                    required
+                />
+                <textarea
+                    name="notes"
+                    placeholder="Notes (optional)"
+                    value={formData.notes}
+                    onChange={handleInputChange}
+                />
+                <button type="submit">
+                    {editingId ? 'Update Workout' : 'Add Workout'}
+                </button>
+                {editingId && (
+                    <button type="button" onClick={cancelEditing}>Cancel</button>
+                )}
+            </form>
 
-                        {/* Placeholder edit button */}
-                        <button onClick={() => alert("Edit functionality not implemented")}>Edit</button>
-
-                        {/* Delete button */}
-                        <button onClick={() => deleteWorkout(item._id)}>Delete</button>
-                    </div>
-                ))
-            ) : (
-                // If data hasn't loaded yet
-                <p>Loading workouts...</p>
-            )}
+            <div className="record-list">
+                {workouts && workouts.length > 0 ? (
+                    workouts.map((item) => (
+                        <div key={item._id} className="record-card">
+                            <h3>{item.title}</h3>
+                            <p>Reps: {item.reps}</p>
+                            <p>Load: {item.load} kg</p>
+                            {item.notes && <p>Notes: {item.notes}</p>}
+                            <button onClick={() => startEditing(item)}>Edit</button>
+                            <button onClick={() => deleteWorkout(item._id)}>Delete</button>
+                        </div>
+                    ))
+                ) : (
+                    <p>Loading workouts...</p>
+                )}
+            </div>
         </div>
     );
 };
 
-// Export component so it can be used in other files
 export default Records;
