@@ -1,0 +1,74 @@
+/* Container for all records */
+.record {
+    background-color: #f8f9fa;
+    /* Light grey background */
+    border: 1px solid #ddd;
+    /* Subtle border */
+    border-radius: 10px;
+    /* Rounded corners */
+    padding: 16px;
+    /* Inner spacing */
+    margin: 12px 0;
+    /* Space between cards */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Soft shadow */
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for cards */
+.record:hover {
+    transform: translateY(-4px);
+}
+
+/* Title styling */
+.record h3 {
+    margin: 0 0 8px;
+    font-size: 1.4rem;
+    color: #333;
+}
+
+/* Paragraph styling */
+.record p {
+    margin: 4px 0;
+    color: #555;
+    font-size: 1rem;
+}
+
+/* Buttons */
+.record button {
+    margin-right: 8px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Edit Button */
+.record button:first-of-type {
+    background-color: #007bff;
+    color: white;
+}
+
+.record button:first-of-type:hover {
+    background-color: #0056b3;
+}
+
+/* Delete Button */
+.record button:last-of-type {
+    background-color: #dc3545;
+    color: white;
+}
+
+.record button:last-of-type:hover {
+    background-color: #b52a37;
+}
+
+/* Heading above all records */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #222;
+}

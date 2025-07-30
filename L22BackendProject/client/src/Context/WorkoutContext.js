@@ -1,15 +1,37 @@
-import { createContext } from 'react'
+// import { createContext, useState } from 'react';
+// export const Data = createContext();
+
+
+// const WorkoutContext = ({children}) => {
+//     //Get Request
+//     const [workouts, setWorkouts] = useState([]);
+//     return (
+//         <div>
+//             <Data.Provider value={{ workouts, setWorkouts }}>
+//                 {children}
+//             </Data.Provider>
+//         </div>
+//     )
+// }
+
+// export default WorkoutContext
+
+
+
+
+
+import { createContext, useState } from 'react';
 
 export const Data = createContext();
 
+const WorkoutContext = ({ children }) => {
+    const [workouts, setWorkouts] = useState([]);
 
-
-const WorkoutContext = () => {
     return (
-        <div>
+        <Data.Provider value={[workouts, setWorkouts]}>
+            {children}
+        </Data.Provider>
+    );
+};
 
-        </div>
-    )
-}
-
-export default WorkoutContext
+export default WorkoutContext;

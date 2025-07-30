@@ -15,18 +15,47 @@
 
 
 
+// // index.js
+// import React from 'react';
+// import ReactDOM from 'react-dom/client';
+// import { BrowserRouter } from 'react-router-dom';
+// import App from './App';
+// import WorkoutContext from './Context/WorkoutContext';
+// import './index.css';
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <React.StrictMode>
+//       <WorkoutContext>
+//       </WorkoutContext>
+//     <BrowserRouter>
+//       <App />
+//     </BrowserRouter>
+//   </React.StrictMode>
+
+
+
+
+// );
+
+
+
+
 // index.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import WorkoutContext from './Context/WorkoutContext'; // Make sure this is a context *provider*
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <WorkoutContext>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </WorkoutContext>
   </React.StrictMode>
 );
