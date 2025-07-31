@@ -55,14 +55,30 @@
 
 
 
+// const express = require('express');
+// const router = express.Router();
+// const { loginUser, signupUser } = require('../controllers/userControllers');
+
+// //Login user
+// router.post('/login', loginUser);     // ✅ function handler
+
+// //Signup user
+// router.post('/signup', signupUser);   // ✅ function handler
+
+// module.exports = router;
+
+
+
+
+
 const express = require('express');
 const router = express.Router();
 const { loginUser, signupUser } = require('../controllers/userControllers');
 
-//Login user
-router.post('/login', loginUser);     // ✅ function handler
+// Login route
+router.post('/login', loginUser);
 
-//Signup user
-router.post('/signup', signupUser);   // ✅ function handler
+// Signup route
+router.post('/signup', signupUser);
 
 module.exports = router;
