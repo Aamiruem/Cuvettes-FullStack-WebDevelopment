@@ -96,6 +96,8 @@ const WorkoutContext = ({ children }) => {
     };
 
     return (
+
+        
         <Data.Provider
             value={{
                 workouts,
@@ -114,7 +116,13 @@ const WorkoutContext = ({ children }) => {
         >
             {children}
         </Data.Provider>
+
+        
+    
     );
+
+        
+
 };
 
 export default WorkoutContext;

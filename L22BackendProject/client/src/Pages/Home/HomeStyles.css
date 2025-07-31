@@ -1,0 +1,19 @@
+.home-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+}
+.home-section h2{
+    font-size: 2.5rem;
+    color: #bc0808;
+    text-align: center;
+}
+.home-section img{
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+}
