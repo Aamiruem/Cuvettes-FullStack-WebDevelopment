@@ -14,7 +14,7 @@ const jwt = require('jsonwebtoken'); // This line fails if jsonwebtoken isn't in
 
 
 const createToken = (_id) => {
-    jwt.sign({ _id }, process.env.JWT_SECRET, { expiresIn: '3d' });
+    return jwt.sign({ _id }, process.env.JWT_SECRET, { expiresIn: '3d' });
 };
 
 module.exports = createToken;

@@ -157,6 +157,9 @@ const signupUser = async (req, res) => {
 
     try {
         const user = await User.signup(email, password); // Assumes user has _id
+
+
+        //create token
         const token = createToken(user._id);
         res.status(200).json({ email: user.email, token });
     } catch (err) {
