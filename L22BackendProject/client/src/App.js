@@ -908,29 +908,28 @@
 
 
 
-// Importing necessary hooks and dependencies
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // For routing
 import './App.css';
-import { Routes, Route } from 'react-router-dom'; // For routing
 
 // Components
 import Navbar from './Components/Navbar/Navbar';
 import Home from './Pages/Home/Home'; // Home page component
+import Signup from './Pages/Signup/Signup'; // Signup page component
+import Login from './Pages/Login/Login'; // Login page component
 
 function App() {
   return (
     <div className="app-container">
       {/* Fixed navbar on top */}
-      <Navbar />
-
-      {/* Routes for navigating between pages */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* You can add more routes here like:
-            <Route path="/records" element={<Records />} />
-        */}
-      </Routes>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
