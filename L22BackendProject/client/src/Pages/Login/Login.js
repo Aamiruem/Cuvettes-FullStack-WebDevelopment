@@ -103,11 +103,13 @@
 
 
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import './Login.css';
 
 const Login = () => {
+
+
   // State for user input
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -116,6 +118,8 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault(); // stop page from refreshing
+    console.log(email, password);
+
 
     try {
       // Send login request to backend
@@ -149,6 +153,7 @@ const Login = () => {
           type="email"
           name="email"
           placeholder="Email.."
+          autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -159,6 +164,7 @@ const Login = () => {
           type="password"
           name="password"
           placeholder="Password"
+          autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required

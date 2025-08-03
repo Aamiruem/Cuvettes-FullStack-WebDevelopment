@@ -165,6 +165,7 @@ const Signup = () => {
           type="email"
           name="email"
           placeholder="Email"
+          autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -175,6 +176,7 @@ const Signup = () => {
           type="password"
           name="password"
           placeholder="Password"
+          autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
