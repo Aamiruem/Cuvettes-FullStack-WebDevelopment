@@ -110,39 +110,133 @@
 
 
 
+// import React, { useState } from 'react';
+// import axios from 'axios';
+// import './Signup.css';
+// import {useSignup} from '../../Hooks/useSignup';
+// const Signup = () => {
+//   // Hold user input in state
+//   const [username, setUsername] = useState('');
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [error, setError] = useState(null);
+//   const [success, setSuccess] = useState(null); // ✅ success message
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+
+//     // Send POST request to your backend
+    
+
+//     try {
+//       const response = await axios.post('http://localhost:4000/api/user/signup', {
+//         username,
+//         email,
+//         password,
+//       });
+
+//       console.log('Signup successful:', response.data);
+//       setError(null);
+//       setSuccess('Signup successful!'); // ✅ Set success message
+
+//       // Optionally clear fields after successful signup
+//       setUsername('');
+//       setEmail('');
+//       setPassword('');
+//     } catch (err) {
+//       setError(err.response?.data?.error || 'Signup failed');
+//       setSuccess(null); // clear previous success message
+//     }
+//   };
+
+//   return (
+//     <div className="signup-container">
+//       <h2>Signup</h2>
+//       <form onSubmit={handleSubmit}>
+//         <label>Username:</label>
+//         <input
+//           type="text"
+//           name="username"
+//           placeholder="Username"
+//           value={username}
+//           onChange={(e) => setUsername(e.target.value)}
+//           required
+//         />
+
+//         <label>Email:</label>
+//         <input
+//           type="email"
+//           name="email"
+//           placeholder="Email"
+//           autoComplete="email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//           required
+//         />
+
+//         <label>Password:</label>
+//         <input
+//           type="password"
+//           name="password"
+//           placeholder="Password"
+//           autoComplete="current-password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//           required
+//         />
+
+//         <button type="submit">Sign Up</button>
+//       </form>
+
+//       {/* Show error or success message */}
+//       {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
+//       {success && <p style={{ color: 'green', marginTop: '1rem' }}>{success}</p>}
+//     </div>
+//   );
+// };
+
+// export default Signup;
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState } from 'react';
-import axios from 'axios';
 import './Signup.css';
+import { useSignup } from '../../Hooks/useSignup';
 
 const Signup = () => {
-  // Hold user input in state
+  // Form state
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null); // ✅ success message
+  const [success, setSuccess] = useState(null);
 
+  // useSignup custom hook
+  const { signup, error, isLoading } = useSignup();
+
+  // Form submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
+    await signup(username, email, password);
 
-    try {
-      const response = await axios.post('http://localhost:4000/api/user/signup', {
-        username,
-        email,
-        password,
-      });
 
-      console.log('Signup successful:', response.data);
-      setError(null);
-      setSuccess('Signup successful!'); // ✅ Set success message
+    const response = await signup(username, email, password);
 
-      // Optionally clear fields after successful signup
+    if (response?.success) {
+      setSuccess('Signup successful!');
       setUsername('');
       setEmail('');
       setPassword('');
-    } catch (err) {
-      setError(err.response?.data?.error || 'Signup failed');
-      setSuccess(null); // clear previous success message
+    } else {
+      setSuccess(null);
     }
   };
 
@@ -153,7 +247,6 @@ const Signup = () => {
         <label>Username:</label>
         <input
           type="text"
-          name="username"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -163,7 +256,6 @@ const Signup = () => {
         <label>Email:</label>
         <input
           type="email"
-          name="email"
           placeholder="Email"
           autoComplete="email"
           value={email}
@@ -174,18 +266,18 @@ const Signup = () => {
         <label>Password:</label>
         <input
           type="password"
-          name="password"
           placeholder="Password"
-          autoComplete="current-password"
+          autoComplete="new-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
 
-        <button type="submit">Sign Up</button>
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? 'Signing up...' : 'Sign Up'}
+        </button>
       </form>
 
-      {/* Show error or success message */}
       {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
       {success && <p style={{ color: 'green', marginTop: '1rem' }}>{success}</p>}
     </div>
