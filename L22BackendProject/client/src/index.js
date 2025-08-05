@@ -107,3 +107,40 @@ root.render(
   </WorkoutContext>
 
 );
+
+
+
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import App from './App';
+// import { AuthContextProvider } from './Context/AuthContext'; // your actual path
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <AuthContextProvider>
+//       <App />
+//     </AuthContextProvider>
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
+
+
+
+
+// import React from 'react';
+// import ReactDOM from 'react-dom/client';
+// import App from './App';
+// import { AuthContextProvider } from './Context/AuthContext';
+// import { WorkoutContextProvider } from './Context/WorkoutContext';
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <React.StrictMode>
+//     <AuthContextProvider>
+//       <WorkoutContextProvider>
+//         <App />
+//       </WorkoutContextProvider>
+//     </AuthContextProvider>
+//   </React.StrictMode>
+// );
