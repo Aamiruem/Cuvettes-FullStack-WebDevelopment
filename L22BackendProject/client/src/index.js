@@ -91,39 +91,27 @@
 
 
 
-// index.js
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-// import { BrowserRouter } from 'react-router-dom';
-import App from './App';
-import WorkoutContext from './Context/WorkoutContext';
-import './index.css';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  
-  <WorkoutContext>
-    <App />
-  </WorkoutContext>
-
-);
-
-
-
-
+// // index.js
 // import React from 'react';
-// import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom/client';
+// // import { BrowserRouter } from 'react-router-dom';
 // import App from './App';
-// import { AuthContextProvider } from './Context/AuthContext'; // your actual path
+// import WorkoutContext from './Context/WorkoutContext';
+// import './index.css';
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <AuthContextProvider>
-//       <App />
-//     </AuthContextProvider>
-//   </React.StrictMode>,
-//   document.getElementById('root')
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+  
+//   <WorkoutContext>
+//     <App />
+//   </WorkoutContext>
+
 // );
+
+
+
+
+
 
 
 
@@ -144,3 +132,35 @@ root.render(
 //     </AuthContextProvider>
 //   </React.StrictMode>
 // );
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { AuthContextProvider } from './Context/AuthContext'; // 👈 your AuthContext provider
+// import { WorkoutContextProvider } from './Context/WorkoutContext'; // if you're using this
+
+import WorkoutContextProvider from './Context/WorkoutContext';
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <AuthContextProvider>
+      <WorkoutContextProvider>
+        <App />
+      </WorkoutContextProvider>
+    </AuthContextProvider>
+  </React.StrictMode>
+);

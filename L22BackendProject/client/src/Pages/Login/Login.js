@@ -103,9 +103,9 @@
 
 
 
+import './Login.css';
 import { useState } from 'react';
 import axios from 'axios';
-import './Login.css';
 
 const Login = () => {
 
@@ -181,3 +181,143 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
+
+
+// import './Login.css';
+// import { useState } from 'react';
+// import { useLogin } from '../../Hooks/useLogin';
+
+// const Login = () => {
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+
+//   const [localError, setLocalError] = useState(null);
+//   const [success, setSuccess] = useState(null);
+
+//   const { login, error } = useLogin();
+
+//   const handleLogin = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       await login(email, password);  // Call login from hook
+//       setSuccess('Login successful!');
+//       setLocalError(null);
+//       setEmail('');
+//       setPassword('');
+//     } catch (err) {
+//       setLocalError('Login failed');  // Fallback error
+//       setSuccess(null);
+//     }
+//   };
+
+//   return (
+//     <div className="login-container">
+//       <h2>Login</h2>
+//       <form onSubmit={handleLogin}>
+//         <label>Email:</label>
+//         <input
+//           type="email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//           required
+//         />
+
+//         <label>Password:</label>
+//         <input
+//           type="password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//           required
+//         />
+
+//         <button type="submit">Login</button>
+//       </form>
+
+//       {/* Show error from hook or local */}
+//       {error && <p style={{ color: 'red' }}>{error}</p>}
+//       {localError && <p style={{ color: 'red' }}>{localError}</p>}
+//       {success && <p style={{ color: 'green' }}>{success}</p>}
+//     </div>
+//   );
+// };
+
+// export default Login;
+
+
+
+
+
+
+
+
+
+
+
+
+// import './Login.css';
+// import { useState } from 'react';
+// import { useLogin } from '../../Hooks/useLogin';
+
+// const Login = () => {
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+
+//   const [success, setSuccess] = useState(null);
+
+//   const { login, error } = useLogin();
+
+//   const handleLogin = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       await login(email, password); // Call login from hook
+//       setSuccess('Login successful!');
+//       setEmail('');
+//       setPassword('');
+//     } catch (err) {
+//       // error from the hook will be handled via `error` variable
+//       setSuccess(null);
+//     }
+//   };
+
+//   return (
+//     <div className="login-container">
+//       <h2>Login</h2>
+//       <form onSubmit={handleLogin}>
+//         <label>Email:</label>
+//         <input
+//           type="email"
+//           name="email"
+//           placeholder="Email"
+//           autoComplete="email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//           required
+//         />
+
+//         <label>Password:</label>
+//         <input
+//           type="password"
+//           name="password"
+//           placeholder="Password"
+//           autoComplete="current-password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//           required
+//         />
+
+//         <button type="submit">Login</button>
+//       </form>
+
+//       {/* Show error from useLogin or success */}
+//       {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
+//       {success && <p style={{ color: 'green', marginTop: '1rem' }}>{success}</p>}
+//     </div>
+//   );
+// };
+
+// export default Login;

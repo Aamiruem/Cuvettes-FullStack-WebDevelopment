@@ -208,25 +208,113 @@
 
 
 
+// import React, { useState } from 'react';
+// import './Signup.css';
+// import { useSignup } from '../../Hooks/useSignup';
+
+// const Signup = () => {
+//   // Form state
+//   const [username, setUsername] = useState('');
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [success, setSuccess] = useState(null);
+
+//   // useSignup custom hook
+//   const { signup, error, isLoading } = useSignup();
+
+//   // Form submit handler
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     await signup(username, email, password);
+
+
+//     const response = await signup(username, email, password);
+
+//     if (response?.success) {
+//       setSuccess('Signup successful!');
+//       setUsername('');
+//       setEmail('');
+//       setPassword('');
+//     } else {
+//       setSuccess(null);
+//     }
+//   };
+
+//   return (
+//     <div className="signup-container">
+//       <h2>Signup</h2>
+//       <form onSubmit={handleSubmit}>
+//         <label>Username:</label>
+//         <input
+//           type="text"
+//           placeholder="Username"
+//           value={username}
+//           onChange={(e) => setUsername(e.target.value)}
+//           required
+//         />
+
+//         <label>Email:</label>
+//         <input
+//           type="email"
+//           placeholder="Email"
+//           autoComplete="email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//           required
+//         />
+
+//         <label>Password:</label>
+//         <input
+//           type="password"
+//           placeholder="Password"
+//           autoComplete="new-password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//           required
+//         />
+
+//         <button type="submit" disabled={isLoading}>
+//           {isLoading ? 'Signing up...' : 'Sign Up'}
+//         </button>
+//       </form>
+
+//       {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
+//       {success && <p style={{ color: 'green', marginTop: '1rem' }}>{success}</p>}
+//     </div>
+//   );
+// };
+
+// export default Signup;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState } from 'react';
 import './Signup.css';
 import { useSignup } from '../../Hooks/useSignup';
 
 const Signup = () => {
-  // Form state
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [success, setSuccess] = useState(null);
 
-  // useSignup custom hook
   const { signup, error, isLoading } = useSignup();
 
-  // Form submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await signup(username, email, password);
 
+    setSuccess(null); // Clear previous success
 
     const response = await signup(username, email, password);
 
@@ -235,8 +323,6 @@ const Signup = () => {
       setUsername('');
       setEmail('');
       setPassword('');
-    } else {
-      setSuccess(null);
     }
   };
 
@@ -249,7 +335,10 @@ const Signup = () => {
           type="text"
           placeholder="Username"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => {
+            setUsername(e.target.value);
+            setSuccess(null); // Reset on input
+          }}
           required
         />
 
@@ -259,7 +348,10 @@ const Signup = () => {
           placeholder="Email"
           autoComplete="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            setSuccess(null); // Reset on input
+          }}
           required
         />
 
@@ -269,7 +361,10 @@ const Signup = () => {
           placeholder="Password"
           autoComplete="new-password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            setSuccess(null); // Reset on input
+          }}
           required
         />
 
