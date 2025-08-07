@@ -162,3 +162,224 @@
     text-align: left;
   }
 }
+
+
+
+
+
+
+
+
+
+/* General navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e1e2f;
+  color: white;
+  padding: 15px 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+/* Logo/title section */
+.navbar-logo h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.navbar-logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Menu (Signup/Login links) */
+.menu {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #00bcd4;
+}
+
+/* Logout section when user is logged in */
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logout span {
+  font-size: 1rem;
+  color: #f1f1f1;
+}
+
+.logout button {
+  padding: 6px 12px;
+  background-color: #ff5252;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout button:hover {
+  background-color: #ff1744;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .menu,
+  .logout {
+    margin-top: 10px;
+  }
+
+  .menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .logout btn {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
+
+/* === NAVBAR BASE === */
+.navbar {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e1e2f;
+  color: white;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #444;
+}
+
+/* === LOGO === */
+.navbar-logo h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #00bfff;
+  font-weight: 600;
+}
+
+.navbar-logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* === MENU (SIGNUP / LOGIN) === */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #34344e;
+  color: #00bfff;
+}
+
+/* === LOGOUT SECTION === */
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logout span {
+  font-size: 1rem;
+  color: #f1f1f1;
+}
+
+.logout button {
+  background-color: #ff4b5c;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.logout button:hover {
+  background-color: #e04352;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .menu,
+  .logout {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .nav-link,
+  .logout button {
+    width: 12%;
+    text-align: left;
+  }
+
+  .navbar-logo h1 {
+    font-size: 1.4rem;
+  }
+}

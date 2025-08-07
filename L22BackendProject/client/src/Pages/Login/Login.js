@@ -103,84 +103,84 @@
 
 
 
-import './Login.css';
-import { useState } from 'react';
-import axios from 'axios';
+// import './Login.css';
+// import { useState } from 'react';
+// import axios from 'axios';
 
-const Login = () => {
-
-
-  // State for user input
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null); // ✅ success state
-
-  const handleLogin = async (e) => {
-    e.preventDefault(); // stop page from refreshing
-    console.log(email, password);
+// const Login = () => {
 
 
-    try {
-      // Send login request to backend
-      const response = await axios.post('http://localhost:4000/api/user/login', {
-        email,
-        password,
-      });
+//   // State for user input
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [error, setError] = useState(null);
+//   const [success, setSuccess] = useState(null); // ✅ success state
 
-      console.log('Login successful:', response.data);
-      setError(null);
-      setSuccess('Login successful!'); // ✅ set success message
+//   const handleLogin = async (e) => {
+//     e.preventDefault(); // stop page from refreshing
+//     console.log(email, password);
 
-      // Optional: Clear form
-      setEmail('');
-      setPassword('');
 
-      // TODO: Save token to localStorage or context
-      // localStorage.setItem('token', response.data.token);
-    } catch (err) {
-      setError(err.response?.data?.error || 'Login failed');
-      setSuccess(null); // Clear success if error
-    }
-  };
+//     try {
+//       // Send login request to backend
+//       const response = await axios.post('http://localhost:4000/api/user/login', {
+//         email,
+//         password,
+//       });
 
-  return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email.."
-          autoComplete="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+//       console.log('Login successful:', response.data);
+//       setError(null);
+//       setSuccess('Login successful!'); // ✅ set success message
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+//       // Optional: Clear form
+//       setEmail('');
+//       setPassword('');
 
-        <button type="submit">Login</button>
-      </form>
+//       // TODO: Save token to localStorage or context
+//       // localStorage.setItem('token', response.data.token);
+//     } catch (err) {
+//       setError(err.response?.data?.error || 'Login failed');
+//       setSuccess(null); // Clear success if error
+//     }
+//   };
 
-      {/* Display error or success */}
-      {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
-      {success && <p style={{ color: 'green', marginTop: '1rem' }}>{success}</p>}
-    </div>
-  );
-};
+//   return (
+//     <div className="login-container">
+//       <h2>Login</h2>
+//       <form onSubmit={handleLogin}>
+//         <label>Email:</label>
+//         <input
+//           type="email"
+//           name="email"
+//           placeholder="Email.."
+//           autoComplete="email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//           required
+//         />
 
-export default Login;
+//         <label>Password:</label>
+//         <input
+//           type="password"
+//           name="password"
+//           placeholder="Password"
+//           autoComplete="current-password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//           required
+//         />
+
+//         <button type="submit">Login</button>
+//       </form>
+
+//       {/* Display error or success */}
+//       {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
+//       {success && <p style={{ color: 'green', marginTop: '1rem' }}>{success}</p>}
+//     </div>
+//   );
+// };
+
+// export default Login;
 
 
 
@@ -258,66 +258,66 @@ export default Login;
 
 
 
-// import './Login.css';
-// import { useState } from 'react';
-// import { useLogin } from '../../Hooks/useLogin';
+import './Login.css';
+import { useState } from 'react';
+import { useLogin } from '../../Hooks/useLogin';
 
-// const Login = () => {
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-//   const [success, setSuccess] = useState(null);
+  const [success, setSuccess] = useState(null);
 
-//   const { login, error } = useLogin();
+  const { login, error } = useLogin();
 
-//   const handleLogin = async (e) => {
-//     e.preventDefault();
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-//     try {
-//       await login(email, password); // Call login from hook
-//       setSuccess('Login successful!');
-//       setEmail('');
-//       setPassword('');
-//     } catch (err) {
-//       // error from the hook will be handled via `error` variable
-//       setSuccess(null);
-//     }
-//   };
+    try {
+      await login(email, password); // Call login from hook
+      setSuccess('Login successful!');
+      setEmail('');
+      setPassword('');
+    } catch (err) {
+      // error from the hook will be handled via `error` variable
+      setSuccess(null);
+    }
+  };
 
-//   return (
-//     <div className="login-container">
-//       <h2>Login</h2>
-//       <form onSubmit={handleLogin}>
-//         <label>Email:</label>
-//         <input
-//           type="email"
-//           name="email"
-//           placeholder="Email"
-//           autoComplete="email"
-//           value={email}
-//           onChange={(e) => setEmail(e.target.value)}
-//           required
-//         />
+  return (
+    <div className="login-container">
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <label>Email:</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          autoComplete="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-//         <label>Password:</label>
-//         <input
-//           type="password"
-//           name="password"
-//           placeholder="Password"
-//           autoComplete="current-password"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//           required
-//         />
+        <label>Password:</label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          autoComplete="current-password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
-//         <button type="submit">Login</button>
-//       </form>
+        <button type="submit">Login</button>
+      </form>
 
-//       {/* Show error from useLogin or success */}
-//       {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
-//       {success && <p style={{ color: 'green', marginTop: '1rem' }}>{success}</p>}
-//     </div>
-//   );
-// };
+      {/* Show error from useLogin or success */}
+      {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
+      {success && <p style={{ color: 'green', marginTop: '1rem' }}>{success}</p>}
+    </div>
+  );
+};
 
-// export default Login;
+export default Login;

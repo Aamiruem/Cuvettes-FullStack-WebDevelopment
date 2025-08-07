@@ -299,6 +299,103 @@
 
 
 
+// import React, { useState } from 'react';
+// import './Signup.css';
+// import { useSignup } from '../../Hooks/useSignup';
+
+// const Signup = () => {
+//   const [username, setUsername] = useState('');
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [success, setSuccess] = useState(null);
+
+//   const { signup, error, isLoading } = useSignup();
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     setSuccess(null); // Clear previous success
+
+//     const response = await signup(username, email, password);
+
+//     if (response?.success) {
+//       setSuccess('Signup successful!');
+//       setUsername('');
+//       setEmail('');
+//       setPassword('');
+//     }
+//   };
+
+//   return (
+//     <div className="signup-container">
+//       <h2>Signup</h2>
+//       <form onSubmit={handleSubmit}>
+//         <label>Username:</label>
+//         <input
+//           type="text"
+//           placeholder="Username"
+//           value={username}
+//           onChange={(e) => {
+//             setUsername(e.target.value);
+//             setSuccess(null); // Reset on input
+//           }}
+//           required
+//         />
+
+//         <label>Email:</label>
+//         <input
+//           type="email"
+//           placeholder="Email"
+//           autoComplete="email"
+//           value={email}
+//           onChange={(e) => {
+//             setEmail(e.target.value);
+//             setSuccess(null); // Reset on input
+//           }}
+//           required
+//         />
+
+//         <label>Password:</label>
+//         <input
+//           type="password"
+//           placeholder="Password"
+//           autoComplete="new-password"
+//           value={password}
+//           onChange={(e) => {
+//             setPassword(e.target.value);
+//             setSuccess(null); // Reset on input
+//           }}
+//           required
+//         />
+
+//         <button type="submit" disabled={isLoading}>
+//           {isLoading ? 'Signing up...' : 'Sign Up'}
+//         </button>
+//       </form>
+
+//       {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
+//       {success && <p style={{ color: 'green', marginTop: '1rem' }}>{success}</p>}
+//     </div>
+//   );
+// };
+
+// export default Signup;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState } from 'react';
 import './Signup.css';
 import { useSignup } from '../../Hooks/useSignup';
@@ -330,17 +427,7 @@ const Signup = () => {
     <div className="signup-container">
       <h2>Signup</h2>
       <form onSubmit={handleSubmit}>
-        <label>Username:</label>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => {
-            setUsername(e.target.value);
-            setSuccess(null); // Reset on input
-          }}
-          required
-        />
+        
 
         <label>Email:</label>
         <input

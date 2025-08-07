@@ -37,9 +37,53 @@
 
 
 
+// import { useState } from 'react';
+// import axios from 'axios';
+// import { useAuthContext } from './useAuthContext';
+
+// export const useLogin = () => {
+//     const [error, setError] = useState(null);
+//     const { dispatch } = useAuthContext();
+
+//     const login = async (email, password) => {
+//         setError(null);
+
+//         try {
+//             const res = await axios.post('http://localhost:4000/api/user/login', {
+//                 email,
+//                 password,
+//             });
+
+//             const data = res.data;
+
+//             // Save user to localStorage
+//             localStorage.setItem('user', JSON.stringify(data));
+
+//             // Update auth context
+//             dispatch({ type: 'LOGIN', payload: data });
+
+//         } catch (err) {
+//             setError(err.response?.data?.error || 'Login failed');
+//         }
+//     };
+
+//     return { login, error };
+// };
+
+
+
+
+
+
+
+
+
+
+
+
 import { useState } from 'react';
-import axios from 'axios';
 import { useAuthContext } from './useAuthContext';
+import axios from 'axios';
 
 export const useLogin = () => {
     const [error, setError] = useState(null);
@@ -61,7 +105,6 @@ export const useLogin = () => {
 
             // Update auth context
             dispatch({ type: 'LOGIN', payload: data });
-
         } catch (err) {
             setError(err.response?.data?.error || 'Login failed');
         }
