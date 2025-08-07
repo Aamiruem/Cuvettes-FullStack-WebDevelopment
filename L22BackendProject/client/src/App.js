@@ -909,25 +909,30 @@
 
 
 
-import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // For routing
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'; // For routing
+import {useAuthContext} from "./Hooks/useAuthContext";
 import './App.css';
 
 // Components
-import Navbar from './Components/Navbar/Navbar';
 import Home from './Pages/Home/Home'; // Home page component
+import Navbar from './Components/Navbar/Navbar';
 import Signup from './Pages/Signup/Signup'; // Signup page component
 import Login from './Pages/Login/Login'; // Login page component
 
 function App() {
+
+  const {user} = useAuthContext();
   return (
     <div className="app-container">
       {/* Fixed navbar on top */}
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
+          
+          <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
+          
+          <Route path="/login" element={!user ?<Login /> : <Navigate to="/" />} />
         </Routes>
       </Router>
     </div>

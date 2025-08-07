@@ -1,23 +1,108 @@
+// const express = require('express');
+// const workout = require('../models/workoutModel');
+// const router = express.Router();
+
+// const authUser = require('../middleware/userMiddleware');
+
+// //Require Controller
+// const { getWorkouts, getWorkout, createWorkout, updateWorkout, deleteWorkout } = require('../controllers/workoutController');
+
+
+// // Middleware
+// router.use(authUser);
+
+// // Get all workouts and Get entire data
+// router.get('/', getWorkouts);
+
+// // Get a single workout by ID
+// router.get('/:id', getWorkout);
+
+// //create record
+// router.post('/', createWorkout);
+
+// //Update a workout
+// router.patch('/:id', updateWorkout);
+
+// // Delete a workout
+// router.delete('/:id', deleteWorkout); // Uncomment when deleteWorkout is implemented
+
+// module.exports = router;
+
+
+
+
+
+
+
+
+
+// const express = require('express');
+// const router = express.Router();
+
+// const { authUser } = require('../middleware/userMiddleware');
+
+// const {
+//     getWorkouts,
+//     getWorkout,
+//     createWorkout,
+//     updateWorkout,
+//     deleteWorkout
+// } = require('../controllers/workoutController');
+
+// router.use(authUser);
+
+// router.get('/', getWorkouts);
+// router.get('/:id', getWorkout);
+// router.post('/', createWorkout);
+// router.patch('/:id', updateWorkout);
+// router.delete('/:id', deleteWorkout);
+
+// module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
 const express = require('express');
-const workout = require('../models/workoutModel');
 const router = express.Router();
 
-//Require Controller
-const { getWorkouts, getWorkout, createWorkout, updateWorkout, deleteWorkout } = require('../controllers/workoutController');
+// Middleware
+const { authUser } = require('../middleware/userMiddleware'); // ✅ Destructure properly
 
-// Get all workouts and Get entire data
+// Controllers
+const {
+    getWorkouts,
+    getWorkout,
+    createWorkout,
+    updateWorkout,
+    deleteWorkout
+} = require('../controllers/workoutController');
+
+// Apply auth middleware to all workout routes
+router.use(authUser); // ✅ Protects all routes below
+
+// GET all workouts
 router.get('/', getWorkouts);
 
-// Get a single workout by ID
+// GET a single workout
 router.get('/:id', getWorkout);
 
-//create record 
+// POST a new workout
 router.post('/', createWorkout);
 
-//Update a workout 
+// PATCH (update) a workout
 router.patch('/:id', updateWorkout);
 
-// Delete a workout 
-router.delete('/:id', deleteWorkout); // Uncomment when deleteWorkout is implemented
+// DELETE a workout
+router.delete('/:id', deleteWorkout);
 
 module.exports = router;
+
