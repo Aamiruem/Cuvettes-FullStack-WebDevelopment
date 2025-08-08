@@ -81,16 +81,52 @@
 
 
 
+// import { useState } from 'react';
+// import { useAuthContext } from './useAuthContext';
+// import axios from 'axios';
+
+// export const useLogin = () => {
+//     const [error, setError] = useState(null);
+//     const { dispatch } = useAuthContext();
+
+//     const login = async (email, password) => {
+//         setError(null);
+
+//         try {
+//             const res = await axios.post('http://localhost:4000/api/user/login', {
+//                 email,
+//                 password,
+//             });
+
+//             const data = res.data;
+
+//             // Save user to localStorage
+//             localStorage.setItem('user', JSON.stringify(data));
+
+//             // Update auth context
+//             dispatch({ type: 'LOGIN', payload: data });
+//         } catch (err) {
+//             setError(err.response?.data?.error || 'Login failed');
+//         }
+//     };
+
+//     return { login, error };
+// };
+
+
+
+
+
 import { useState } from 'react';
-import { useAuthContext } from './useAuthContext';
 import axios from 'axios';
+import { useAuthContext } from './useAuthContext';
 
 export const useLogin = () => {
     const [error, setError] = useState(null);
     const { dispatch } = useAuthContext();
 
     const login = async (email, password) => {
-        setError(null);
+        setError(null); // Reset error before trying login
 
         try {
             const res = await axios.post('http://localhost:4000/api/user/login', {
@@ -100,13 +136,18 @@ export const useLogin = () => {
 
             const data = res.data;
 
-            // Save user to localStorage
+            // Save to localStorage
             localStorage.setItem('user', JSON.stringify(data));
 
-            // Update auth context
+            // Update context
             dispatch({ type: 'LOGIN', payload: data });
+
         } catch (err) {
-            setError(err.response?.data?.error || 'Login failed');
+            const errMsg = err.response?.data?.error || 'Login failed';
+            setError(errMsg);
+
+            // 🔴 Rethrow to let the component know login failed
+            throw new Error(errMsg);
         }
     };
 
