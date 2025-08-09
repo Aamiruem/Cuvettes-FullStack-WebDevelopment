@@ -28,12 +28,69 @@
 
 
 
+
+
+
+// import { createContext, useReducer, useContext } from 'react';
+
+// export const WorkoutContext = createContext();
+
+// const workoutReducer = (state, action) => {
+//     switch (action.type) {
+//         case 'SET_WORKOUTS':
+//             return { workouts: action.payload };
+//         case 'CREATE_WORKOUT':
+//             return { workouts: [action.payload, ...state.workouts] };
+//         case 'DELETE_WORKOUT':
+//             return { workouts: state.workouts.filter(w => w._id !== action.payload._id) };
+//         default:
+//             return state;
+//     }
+// };
+
+// export const WorkoutContextProvider = ({ children }) => {
+//     const [state, dispatch] = useReducer(workoutReducer, {
+//         workouts: null,
+//     });
+
+//     return (
+//         <WorkoutContext.Provider value={{ ...state, dispatch }}>
+//             {children}
+//         </WorkoutContext.Provider>
+//     );
+// };
+
+// export const useWorkoutContext = () => {
+//     const context = useContext(WorkoutContext);
+//     if (!context) {
+//         throw new Error('useWorkoutContext must be used within a WorkoutContextProvider');
+//     }
+//     return context;
+// };
+
+// export default WorkoutContext;
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { createContext, useState } from 'react';
 import axios from 'axios';
+import {useAuthContext} from '../Hooks/useAuthContext';
 
 export const Data = createContext();
 
+
 const WorkoutContext = ({ children }) => {
+    const {user} = useAuthContext();
     // All workouts
     const [workouts, setWorkouts] = useState([]);
 
@@ -57,7 +114,11 @@ const WorkoutContext = ({ children }) => {
     // Fetch workouts from backend
     const getWorkouts = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/workouts');
+            const response = await axios.get('http://localhost:4000/api/workouts', {
+                headers: {
+                    "Authorization": `Bearer ${user.token}`
+                }
+            });
             const data = response.data;
             setWorkouts(data);
         } catch (error) {
@@ -68,7 +129,11 @@ const WorkoutContext = ({ children }) => {
     // Delete workout
     const deleteWorkout = async (_id) => {
         try {
-            await axios.delete(`http://localhost:4000/api/workouts/${_id}`);
+            await axios.delete(`http://localhost:4000/api/workouts/${_id}`, {
+                headers: {
+                    "Authorization": `Bearer ${user.token}`
+                }
+            });
             getWorkouts();
         } catch (error) {
             console.error('Error deleting workout:', error.message);
@@ -121,59 +186,10 @@ const WorkoutContext = ({ children }) => {
                 handleUpdateFieldChange,
                 startEditing,
                 
-
             }}
         >
             {children}
         </Data.Provider>
-
-        
-    
     );
-
-        
-
 };
-
 export default WorkoutContext;
-
-
-
-
-
-// import { createContext, useReducer, useContext } from 'react';
-
-// export const WorkoutContext = createContext();
-
-// const workoutReducer = (state, action) => {
-//     switch (action.type) {
-//         case 'SET_WORKOUTS':
-//             return { workouts: action.payload };
-//         case 'CREATE_WORKOUT':
-//             return { workouts: [action.payload, ...state.workouts] };
-//         case 'DELETE_WORKOUT':
-//             return { workouts: state.workouts.filter(w => w._id !== action.payload._id) };
-//         default:
-//             return state;
-//     }
-// };
-
-// export const WorkoutContextProvider = ({ children }) => {
-//     const [state, dispatch] = useReducer(workoutReducer, {
-//         workouts: null,
-//     });
-
-//     return (
-//         <WorkoutContext.Provider value={{ ...state, dispatch }}>
-//             {children}
-//         </WorkoutContext.Provider>
-//     );
-// };
-
-// export const useWorkoutContext = () => {
-//     const context = useContext(WorkoutContext);
-//     if (!context) {
-//         throw new Error('useWorkoutContext must be used within a WorkoutContextProvider');
-//     }
-//     return context;
-// };

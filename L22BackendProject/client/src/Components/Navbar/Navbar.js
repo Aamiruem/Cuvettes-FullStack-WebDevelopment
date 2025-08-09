@@ -71,13 +71,7 @@
 //                 </Link>
 //             </div>
 
-//             {user && (
-//                 <div className="logout">
-//                     <span>{user.email}</span>
-//                     <button onClick={handleLogout}>Logout</button>
-//                 </div>
-//             )}
-
+                
 
 //             {user ? (
 //                 // Show when logged in
